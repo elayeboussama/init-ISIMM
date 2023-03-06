@@ -9,6 +9,7 @@ public class Reclamation implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_reclamation", nullable = false)
     private Long idReclamation;
 
     @Column(length = 100)

@@ -10,7 +10,8 @@ public class DemandeConger implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long idSection;
+    @Column(name = "id_demande_conger", nullable = false)
+    private Long idDemandeConger;
 
     @Column(length = 100)
     private String name;

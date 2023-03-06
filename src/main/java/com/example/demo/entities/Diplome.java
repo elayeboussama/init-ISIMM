@@ -10,6 +10,7 @@ public class Diplome implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_diplome", nullable = false)
     private Long idDiplome;
 
     @Column(length = 100)

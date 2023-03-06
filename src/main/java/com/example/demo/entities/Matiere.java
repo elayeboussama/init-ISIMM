@@ -10,6 +10,7 @@ public class Matiere implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_matiere", nullable = false)
     private Long idMatiere;
 
     @Column(length = 100)

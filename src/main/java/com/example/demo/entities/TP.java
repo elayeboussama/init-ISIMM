@@ -9,6 +9,7 @@ public class TP implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_tp", nullable = false)
     private Long idTp;
 
     @Column(length = 100)

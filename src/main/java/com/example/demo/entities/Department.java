@@ -10,6 +10,7 @@ public class Department implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_department", nullable = false)
     private Long idDepartment;
 
     @Column(length = 100)

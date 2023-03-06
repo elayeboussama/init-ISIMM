@@ -5,16 +5,13 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
-
-
-
-
-
 @Entity
-public class Enseignant   implements Serializable {
+
+public class Enseignant extends Employer  {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_enseignant", nullable = false)
     private Long idEnseignant;
 
     @Column(length = 100)
@@ -44,10 +41,8 @@ public class Enseignant   implements Serializable {
     public Enseignant() {
 
     }
-    public Enseignant(Department department, Set<DemandeConger> demandeConger) {
-
-            this.department = department;
-            this.demandeConger = demandeConger;
+    public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String name, String prenom, int age, String adresse) {
+        super(department, demandeConger, demandeStockable, name, prenom, age, adresse);
 
     }
 

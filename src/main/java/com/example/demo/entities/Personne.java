@@ -1,17 +1,13 @@
 package com.example.demo.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 
-@Entity
+
+@MappedSuperclass
 public class Personne implements Serializable {
-    @Id
-    @GeneratedValue
-    private Long idPersonne;
+
 
     @Column(length = 100)
     private String name;

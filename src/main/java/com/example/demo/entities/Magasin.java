@@ -10,13 +10,20 @@ public class Magasin implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long idService;
+    @Column(name = "id_magasin", nullable = false)
+    private Long idMagasin;
 
     @Column(length = 100)
     private String name;
 
     @OneToMany(mappedBy = "magasin",fetch=FetchType.LAZY)
-    private Set<Service> services;
+    private Set<DemandeStockable> demandeStockables;
+
+
+    @OneToMany(mappedBy = "magasin",fetch=FetchType.LAZY)
+    private Set<Stockable> stockables;
+
+
 
 
     public Magasin() {
@@ -25,7 +32,6 @@ public class Magasin implements Serializable {
 
     public Magasin(String name, Set<Service> services) {
         this.name = name;
-        this.services = services;
 
     }
 
@@ -37,13 +43,7 @@ public class Magasin implements Serializable {
         this.name = name;
     }
 
-    public Set<Service> getServices() {
-        return services;
-    }
 
-    public void setServices(Set<Service> services) {
-        this.services = services;
-    }
 }
 //Constructors
 

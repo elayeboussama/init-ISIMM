@@ -10,6 +10,7 @@ public class Service implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_service", nullable = false)
     private Long idService;
 
     @Column(length = 100)
@@ -18,10 +19,16 @@ public class Service implements Serializable {
     @ManyToMany
     private Set<Enseignant> enseignants;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="magasin")
-    private Magasin magasin;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="magasin")
+//    private Magasin magasin;
 
+    @OneToMany(mappedBy = "service",fetch=FetchType.LAZY)
+    private Set<DemandeStockable> demandeStockable;
+
+
+    @OneToMany(mappedBy = "service",fetch=FetchType.LAZY)
+    private Set<Stockable> stockables;
 
     public Service() {
 

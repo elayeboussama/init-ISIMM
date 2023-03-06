@@ -10,6 +10,7 @@ public class Unite implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_unite", nullable = false)
     private Long idUnite;
 
     @Column(length = 100)

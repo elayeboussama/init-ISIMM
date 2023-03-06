@@ -10,6 +10,7 @@ public class Niveau implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_niveau", nullable = false)
     private Long idNiveau;
 
     @Column(length = 100)

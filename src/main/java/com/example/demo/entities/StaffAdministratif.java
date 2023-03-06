@@ -7,10 +7,11 @@ import java.util.Set;
 
 
 @Entity
-public class StaffAdministratif   implements Serializable {
+public class StaffAdministratif   extends Employer {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_staff_administratif", nullable = false)
     private Long idStaffAdministratif;
 
     @Column(length = 100)
@@ -39,10 +40,8 @@ public class StaffAdministratif   implements Serializable {
     public StaffAdministratif() {
 
     }
-    public StaffAdministratif(Department department, Set<DemandeConger> demandeConger) {
-
-            this.department = department;
-            this.demandeConger = demandeConger;
+    public StaffAdministratif(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String name, String prenom, int age, String adresse) {
+        super(department, demandeConger, demandeStockable, name, prenom, age, adresse);
 
     }
 

@@ -9,6 +9,7 @@ public class Voeux implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_voeux", nullable = false)
     private Long idVoeux;
 
     @Column(length = 100)

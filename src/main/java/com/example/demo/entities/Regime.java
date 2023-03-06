@@ -11,6 +11,7 @@ public class Regime implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_regime", nullable = false)
     private Long idRegime;
 
     @Column(length = 100)

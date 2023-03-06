@@ -10,6 +10,7 @@ public class Semestre implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_semestre", nullable = false)
     private Long idSemestre;
 
     @Column(length = 100)

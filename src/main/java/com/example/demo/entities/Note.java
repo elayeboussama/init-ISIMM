@@ -7,16 +7,18 @@ import java.util.Set;
 
 @Entity
 public class Note implements Serializable {
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="SA")
-    private StaffAdministratif SA;
+
     @Id
     @GeneratedValue
+    @Column(name = "id_note", nullable = false)
     private Long idNote;
 
     @Column(length = 100)
     private String name;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="SA")
+    private StaffAdministratif SA;
 
     @OneToMany(mappedBy = "note",fetch=FetchType.LAZY)
     private Set<Reclamation> reclamations;

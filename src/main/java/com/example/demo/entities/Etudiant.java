@@ -6,17 +6,17 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class Etudiant    implements Serializable {
+public class Etudiant extends Personne {
     @Id
     @GeneratedValue
+    @Column(name = "id_etudiant", nullable = false)
     private Long idEtudiant;
-    @Column(length = 100)
-    private String name;
+
     @OneToMany(mappedBy = "etudiant",fetch=FetchType.LAZY)
     private Set<Note> notes;
 
     public Etudiant(String name, String prenom, int age, String adresse, Set<Note> notes) {
-
+        super(name, prenom, age, adresse);
          this.notes = notes;
     }
 

@@ -10,6 +10,7 @@ public class TD implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_td", nullable = false)
     private Long idTd;
 
     @Column(length = 100)
