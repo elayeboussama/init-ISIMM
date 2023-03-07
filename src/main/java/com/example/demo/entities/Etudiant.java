@@ -3,6 +3,7 @@ package com.example.demo.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -15,8 +16,8 @@ public class Etudiant extends Personne {
     @OneToMany(mappedBy = "etudiant",fetch=FetchType.LAZY)
     private Set<Note> notes;
 
-    public Etudiant(String name, String prenom, int age, String adresse, Set<Note> notes) {
-        super(name, prenom, age, adresse);
+    public Etudiant(String cin, String nom, String prénom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, Set<Note> notes) {
+        super(cin, nom, prénom, naissance, sexe, adresse, password, email, telephone, age);
          this.notes = notes;
     }
 

@@ -14,7 +14,7 @@ public class Diplome implements Serializable {
     private Long idDiplome;
 
     @Column(length = 100)
-    private String name;
+    private String nom;
 
 
     @OneToMany(mappedBy="diplome",fetch=FetchType.LAZY)
@@ -27,22 +27,22 @@ public class Diplome implements Serializable {
     }
 
     public Diplome(String name, Set<Niveau> niveau) {
-        this.name = name;
+        this.nom = nom;
         this.niveau = niveau;
     }
 
     public Diplome(String name ) {
-        this.name = name;
+        this.nom = nom;
     }
 
 
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public Set<Niveau> getNiveau() {

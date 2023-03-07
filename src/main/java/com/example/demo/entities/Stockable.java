@@ -14,7 +14,8 @@ public class Stockable implements Serializable {
     private Long idStockable;
 
     @Column(length = 100)
-    private String name;
+    private String nom;
+
 
 
     @ManyToMany
@@ -31,8 +32,56 @@ public class Stockable implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_service" , referencedColumnName = "idService")
     private Service service;
+    public Stockable() {
 
+    }
+    public Stockable(String nom, Set<FactureStockable> factureStockables, DemandeUnstockable demandeUnstockable, Magasin magasin, Service service) {
+        this.nom = nom;
+        this.factureStockables = factureStockables;
+        this.demandeUnstockable = demandeUnstockable;
+        this.magasin = magasin;
+        this.service = service;
+    }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Set<FactureStockable> getFactureStockables() {
+        return factureStockables;
+    }
+
+    public void setFactureStockables(Set<FactureStockable> factureStockables) {
+        this.factureStockables = factureStockables;
+    }
+
+    public DemandeUnstockable getDemandeUnstockable() {
+        return demandeUnstockable;
+    }
+
+    public void setDemandeUnstockable(DemandeUnstockable demandeUnstockable) {
+        this.demandeUnstockable = demandeUnstockable;
+    }
+
+    public Magasin getMagasin() {
+        return magasin;
+    }
+
+    public void setMagasin(Magasin magasin) {
+        this.magasin = magasin;
+    }
+
+    public Service getService() {
+        return service;
+    }
+
+    public void setService(Service service) {
+        this.service = service;
+    }
 }
 //Constructors
 

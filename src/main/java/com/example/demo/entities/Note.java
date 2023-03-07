@@ -3,6 +3,7 @@ package com.example.demo.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -13,8 +14,7 @@ public class Note implements Serializable {
     @Column(name = "id_note", nullable = false)
     private Long idNote;
 
-    @Column(length = 100)
-    private String name;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="SA")
@@ -35,45 +35,34 @@ public class Note implements Serializable {
     @JoinColumn(name="enseingant")
     private Enseignant enseingant;
 
+    public enum typeNote{DS, EX, TP, ORAL }
+
+    private typeNote type;
+
+private float note;
+private Date date;
     public Note() {
 
     }
 
-    public Note(String name, Matiere matiere, Enseignant enseingant, Etudiant etudiant) {
-        this.name = name;
+    public Note(StaffAdministratif SA, Set<Reclamation> reclamations, Matiere matiere, Etudiant etudiant, Enseignant enseingant, typeNote type, float note, Date date) {
+        this.SA = SA;
+        this.reclamations = reclamations;
         this.matiere = matiere;
-        this.enseingant = enseingant;
         this.etudiant = etudiant;
-    }
-
-    public Note(String name ) {
-        this.name = name;
-    }
-
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Matiere getMatiere() {
-        return matiere;
-    }
-
-    public void setMatiere(Matiere matiere) {
-        this.matiere = matiere;
-    }
-
-    public Enseignant getEnseignant() {
-        return enseingant;
-    }
-
-    public void setEnseignant(Enseignant enseingant) {
         this.enseingant = enseingant;
+        this.type = type;
+        this.note = note;
+        this.date = date;
+    }
+
+
+    public StaffAdministratif getSA() {
+        return SA;
+    }
+
+    public void setSA(StaffAdministratif SA) {
+        this.SA = SA;
     }
 
     public Set<Reclamation> getReclamations() {
@@ -82,6 +71,14 @@ public class Note implements Serializable {
 
     public void setReclamations(Set<Reclamation> reclamations) {
         this.reclamations = reclamations;
+    }
+
+    public Matiere getMatiere() {
+        return matiere;
+    }
+
+    public void setMatiere(Matiere matiere) {
+        this.matiere = matiere;
     }
 
     public Etudiant getEtudiant() {
@@ -98,6 +95,30 @@ public class Note implements Serializable {
 
     public void setEnseingant(Enseignant enseingant) {
         this.enseingant = enseingant;
+    }
+
+    public typeNote getType() {
+        return type;
+    }
+
+    public void setType(typeNote type) {
+        this.type = type;
+    }
+
+    public float getNote() {
+        return note;
+    }
+
+    public void setNote(float note) {
+        this.note = note;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
 //Constructors

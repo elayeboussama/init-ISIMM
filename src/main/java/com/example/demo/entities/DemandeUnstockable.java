@@ -13,8 +13,8 @@ public class DemandeUnstockable implements Serializable {
     @Column(name = "id_demande_unstockable", nullable = false)
     private Long idDemandeUnstockable;
 
-    @Column(length = 100)
-    private String name;
+    @Column()
+    private int quantite;
 
 
     @OneToOne(mappedBy = "demandeUnstockable")
@@ -25,4 +25,33 @@ public class DemandeUnstockable implements Serializable {
     private Set<Stockable> stockables;
 
 
+    public DemandeUnstockable(int quantite, DemandeStockable demandeStockable, Set<Stockable> stockables) {
+        this.quantite = quantite;
+        this.demandeStockable = demandeStockable;
+        this.stockables = stockables;
+    }
+
+    public int getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
+    public DemandeStockable getDemandeStockable() {
+        return demandeStockable;
+    }
+
+    public void setDemandeStockable(DemandeStockable demandeStockable) {
+        this.demandeStockable = demandeStockable;
+    }
+
+    public Set<Stockable> getStockables() {
+        return stockables;
+    }
+
+    public void setStockables(Set<Stockable> stockables) {
+        this.stockables = stockables;
+    }
 }

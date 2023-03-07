@@ -30,9 +30,26 @@ public class Magasin implements Serializable {
 
     }
 
-    public Magasin(String name, Set<Service> services) {
+    public Magasin(String name, Set<DemandeStockable> demandeStockables, Set<Stockable> stockables) {
         this.name = name;
+        this.demandeStockables = demandeStockables;
+        this.stockables = stockables;
+    }
 
+    public Set<DemandeStockable> getDemandeStockables() {
+        return demandeStockables;
+    }
+
+    public void setDemandeStockables(Set<DemandeStockable> demandeStockables) {
+        this.demandeStockables = demandeStockables;
+    }
+
+    public Set<Stockable> getStockables() {
+        return stockables;
+    }
+
+    public void setStockables(Set<Stockable> stockables) {
+        this.stockables = stockables;
     }
 
     public String getName() {
@@ -42,6 +59,9 @@ public class Magasin implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    public boolean confirmer(DemandeStockable ds){ return true;}
 
 
 }

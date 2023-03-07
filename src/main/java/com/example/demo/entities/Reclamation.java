@@ -12,9 +12,13 @@ public class Reclamation implements Serializable {
     @Column(name = "id_reclamation", nullable = false)
     private Long idReclamation;
 
-    @Column(length = 100)
-    private String name;
 
+
+    @Column
+    private String message;
+
+    @Column
+    private String statut;
 
     @ManyToOne()
     @JoinColumn(name="reclamations")
@@ -24,24 +28,12 @@ public class Reclamation implements Serializable {
 
     }
 
-    public Reclamation(String name,Note note ) {
-        this.name = name;
+    public Reclamation(Note note, String message, String statut) {
         this.note = note;
+        this.message = message;
+        this.statut = statut;
     }
 
-    public Reclamation(String name ) {
-        this.name = name;
-    }
-
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Note getNote() {
         return note;
@@ -49,6 +41,22 @@ public class Reclamation implements Serializable {
 
     public void setNote(Note note) {
         this.note = note;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 }
 //Constructors

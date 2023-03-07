@@ -3,6 +3,7 @@ package com.example.demo.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -14,9 +15,6 @@ public class Enseignant extends Employer  {
     @Column(name = "id_enseignant", nullable = false)
     private Long idEnseignant;
 
-    @Column(length = 100)
-    private String name;
-
     @OneToMany(mappedBy="enseignant",fetch=FetchType.LAZY)
     private Set<Voeux> voeux;
 
@@ -27,35 +25,23 @@ public class Enseignant extends Employer  {
     @OneToMany(mappedBy = "enseingant",fetch=FetchType.LAZY)
     private Set<Note> notes;
 
-    @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="department")
-    private Department department;
+    public enum Grade{MAITRE, ASSISTANT,PROF }
 
-    @OneToMany(mappedBy = "enseignant",fetch=FetchType.LAZY)
-    private Set<DemandeConger> demandeConger;
-
-    @ManyToMany
-    private Set<Service> services;
+    private float NombreHeur;
+    private String NiveauEnseigné;
+    private Grade grade ;
 
 
     public Enseignant() {
 
     }
-    public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String name, String prenom, int age, String adresse) {
-        super(department, demandeConger, demandeStockable, name, prenom, age, adresse);
-
+    public Enseignant(float NombreHeur, String NiveauEnseigné, Grade grade , Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prénom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire) {
+        super(department, demandeConger, demandeStockable, cin, nom, prénom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
+        this.NombreHeur = NombreHeur;
+        this.NiveauEnseigné = NiveauEnseigné;
+        this.grade = grade;
     }
 
-
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Set<Voeux> getVoeux() {
         return voeux;
@@ -82,14 +68,6 @@ public class Enseignant extends Employer  {
     }
 
 
-
-    public Set<Service> getServices() {
-        return services;
-    }
-
-    public void setServices(Set<Service> services) {
-        this.services = services;
-    }
 }
 //Constructors
 

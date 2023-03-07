@@ -14,7 +14,13 @@ public class Department implements Serializable {
     private Long idDepartment;
 
     @Column(length = 100)
-    private String name;
+    private String nom;
+
+
+    private String NonDepartement;
+
+    @OneToOne
+    private Employer ChefDepartement;
 
     @OneToMany(mappedBy = "department",fetch=FetchType.LAZY)
     private Set<Employer> employers;
@@ -28,17 +34,17 @@ public class Department implements Serializable {
     }
 
     public Department(String name, Set<Employer> employers ) {
-        this.name = name;
+        this.nom = nom;
         this.employers = employers;
 
     }
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public Set<Employer> getEmployers() {

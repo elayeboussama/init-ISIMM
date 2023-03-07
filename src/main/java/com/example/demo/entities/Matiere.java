@@ -24,6 +24,9 @@ public class Matiere implements Serializable {
     private float coeff;
 
 
+    private int code;
+
+
 
 
 
@@ -62,7 +65,8 @@ public class Matiere implements Serializable {
     }
 
 
-    public Matiere(String name, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Enseignant enseignant, Regime regime, Set<Note> notes, Unite unite, float credit, float coeff) {
+    public Matiere(int code, String name, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Enseignant enseignant, Regime regime, Set<Note> notes, Unite unite, float credit, float coeff) {
+        this.code = code;
         this.name = name;
         this.nbHCr = nbHCr;
         this.nbHTd = nbHTd;
@@ -75,6 +79,22 @@ public class Matiere implements Serializable {
         this.coeff = coeff;
         this.credit = credit;
         this.notes = notes;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public StaffAdministratif getSA() {
+        return SA;
+    }
+
+    public void setSA(StaffAdministratif SA) {
+        this.SA = SA;
     }
 
     public float getCredit() {
@@ -93,13 +113,12 @@ public class Matiere implements Serializable {
         this.coeff = coeff;
     }
 
-
-    public String getName() {
-        return name;
+    public int getCode() {
+        return code;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public int getNbHCr() {
@@ -150,27 +169,27 @@ public class Matiere implements Serializable {
         this.enseignant = enseignant;
     }
 
-    public Regime getRegim() {
+    public Regime getRegime() {
         return regime;
     }
 
-    public void setRegim(Regime regim) {
-        this.regime = regim;
+    public void setRegime(Regime regime) {
+        this.regime = regime;
     }
 
-    public  Unite getUnites() {
-        return unite ;
+    public Unite getUnite() {
+        return unite;
     }
 
-    public void setUnites( Unite  unite ) {
-        this.unite  = unite ;
+    public void setUnite(Unite unite) {
+        this.unite = unite;
     }
 
-    public Set<Note>  getNotes() {
+    public Set<Note> getNotes() {
         return notes;
     }
 
-    public void setNotes( Set<Note>  notes) {
+    public void setNotes(Set<Note> notes) {
         this.notes = notes;
     }
 }
