@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface FournisseurRepository extends JpaRepository<Fournisseur, Long> {
 
-    @Query("select v from Fournisseur v where v.name like :x")
-    public List<Fournisseur> findByName(@Param("x")String mc);
+//    @Query("select v from Fournisseur v where v.name like :x")
+//    public List<Fournisseur> findByName(@Param("x")String mc);
 
 
 }

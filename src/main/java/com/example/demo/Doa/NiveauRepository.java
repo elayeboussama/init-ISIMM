@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface NiveauRepository extends JpaRepository<Niveau, Long> {
 
-    @Query("select n from Niveau n where n.name like :x")
-    public List<Niveau> findByName(@Param("x")String mc);
+//    @Query("select n from Niveau n where n.name like :x")
+//    public List<Niveau> findByName(@Param("x")String mc);
 
 
 }

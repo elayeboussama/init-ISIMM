@@ -7,13 +7,13 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-
+@Table(name="Enseignant")
 public class Enseignant extends Employer  {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id_enseignant", nullable = false)
-    private Long idEnseignant;
+//    @Id
+//    @GeneratedValue
+//    @Column(name = "id_enseignant", nullable = false)
+//    private Long idEnseignant;
 
     @OneToMany(mappedBy="enseignant",fetch=FetchType.LAZY)
     private Set<Voeux> voeux;

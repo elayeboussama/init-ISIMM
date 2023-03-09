@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface StaffAdministratifRepository extends JpaRepository<StaffAdministratif, Long> {
 
-    @Query("select v from StaffAdministratif v where v.name like :x")
-    public List<StaffAdministratif> findByName(@Param("x")String mc);
+//    @Query("select v from StaffAdministratif v where v.name like :x")
+//    public List<StaffAdministratif> findByName(@Param("x")String mc);
 
 
 }

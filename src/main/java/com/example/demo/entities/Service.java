@@ -10,7 +10,7 @@ public class Service implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "id_service", nullable = false)
+    @Column(name = "idService", nullable = false)
     private Long idService;
 
     @Column(length = 100)

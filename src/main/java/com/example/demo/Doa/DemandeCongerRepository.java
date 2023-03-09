@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface DemandeCongerRepository extends JpaRepository<DemandeConger, Long> {
 
-    @Query("select v from DemandeConger v where v.name like :x")
-    public List<DemandeConger> findByName(@Param("x")String mc);
+//    @Query("select v from DemandeConger v where v.nom like :x")
+//    public List<DemandeConger> findByName(@Param("x")String mc);
 
 
 }

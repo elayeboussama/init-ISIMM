@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface MatiereRepository extends JpaRepository<Matiere, Long> {
 
-    @Query("select m from Matiere m where m.name like :x")
-    public List<Matiere> findByName(@Param("x")String mc);
+//    @Query("select m from Matiere m where m.name like :x")
+//    public List<Matiere> findByName(@Param("x")String mc);
 
 
 }

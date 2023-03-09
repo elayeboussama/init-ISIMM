@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface StockableRepository extends JpaRepository<Stockable, Long> {
 
-    @Query("select v from Stockable v where v.name like :x")
-    public List<Stockable> findByName(@Param("x")String mc);
+//    @Query("select v from Stockable v where v.name like :x")
+//    public List<Stockable> findByName(@Param("x")String mc);
 
 
 }

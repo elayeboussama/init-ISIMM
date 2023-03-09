@@ -5,17 +5,20 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Personne implements Serializable {
-
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
     public enum Sexe{HOMME, FEMME};
     @Column(length = 100)
     private String cin;
     @Column(length = 100)
     private String nom;
     @Column(length = 100)
-    private String prénom;
+    private String prenom;
 
     private Date naissance;
 
@@ -35,10 +38,10 @@ public class Personne implements Serializable {
 
     }
 
-    public Personne(String cin, String nom, String prénom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age) {
+    public Personne(String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age) {
         this.cin = cin;
         this.nom = nom;
-        this.prénom = prénom;
+        this.prenom = prenom;
         this.naissance = naissance;
         this.sexe = sexe;
         this.adresse = adresse;
@@ -64,12 +67,12 @@ public class Personne implements Serializable {
         this.nom = nom;
     }
 
-    public String getPrénom() {
-        return prénom;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setPrénom(String prénom) {
-        this.prénom = prénom;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
     public Date getNaissance() {

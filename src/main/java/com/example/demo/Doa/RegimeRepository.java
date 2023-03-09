@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface RegimeRepository extends JpaRepository<Regime, Long> {
 
-    @Query("select r from Regime r where r.name like :x")
-    public List<Regime> findByName(@Param("x")String mc);
+//    @Query("select r from Regime r where r.name like :x")
+//    public List<Regime> findByName(@Param("x")String mc);
 
 
 }

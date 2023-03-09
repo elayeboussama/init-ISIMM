@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface DemandeUnstockableRepository extends JpaRepository<DemandeUnstockable, Long> {
 
-    @Query("select v from DemandeUnstockable v where v.name like :x")
-    public List<DemandeUnstockable> findByName(@Param("x")String mc);
+//    @Query("select v from DemandeUnstockable v where v.name like :x")
+//    public List<DemandeUnstockable> findByName(@Param("x")String mc);
 
 
 }

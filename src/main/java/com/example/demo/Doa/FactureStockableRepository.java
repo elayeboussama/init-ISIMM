@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface FactureStockableRepository extends JpaRepository<FactureStockable, Long> {
 
-    @Query("select v from FactureStockable v where v.name like :x")
-    public List<FactureStockable> findByName(@Param("x")String mc);
+//    @Query("select v from FactureStockable v where v.name like :x")
+//    public List<FactureStockable> findByName(@Param("x")String mc);
 
 
 }

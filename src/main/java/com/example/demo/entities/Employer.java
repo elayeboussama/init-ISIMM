@@ -7,12 +7,13 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
+@Table(name="Employer")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Employer  extends Personne {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_employer", nullable = false)
-    private Long idEmployer;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "id_employer", nullable = false)
+//    private Long idEmployer;
 
     @OneToOne
     private Department departement;
@@ -39,16 +40,10 @@ public class Employer  extends Personne {
     @OneToMany(mappedBy = "employer",fetch=FetchType.LAZY)
     private Set<DemandeStockable> demandeStockable;
 
-    public Long getIdEmployer() {
-        return idEmployer;
-    }
 
-    public void setIdEmployer(Long idEmployer) {
-        this.idEmployer = idEmployer;
-    }
 
-    public Employer(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prénom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire) {
-        super(cin, nom, prénom, naissance, sexe, adresse, password, email, telephone, age);
+    public Employer(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire) {
+        super(cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age);
         this.department = department;
         this.demandeConger = demandeConger;
         this.demandeStockable = demandeStockable;

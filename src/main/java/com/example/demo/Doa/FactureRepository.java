@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface FactureRepository extends JpaRepository<Facture, Long> {
 
-    @Query("select v from Facture v where v.name like :x")
-    public List<Facture> findByName(@Param("x")String mc);
+//    @Query("select v from Facture v where v.name like :x")
+//    public List<Facture> findByName(@Param("x")String mc);
 
 
 }

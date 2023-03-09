@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface ServiceRepository extends JpaRepository<Service, Long> {
 
-    @Query("select v from Service v where v.name like :x")
-    public List<Service> findByName(@Param("x")String mc);
+//    @Query("select v from Service v where v.name like :x")
+//    public List<Service> findByName(@Param("x")String mc);
 
 
 }

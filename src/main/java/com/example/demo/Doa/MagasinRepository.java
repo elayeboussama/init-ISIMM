@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface MagasinRepository extends JpaRepository<Magasin, Long> {
 
-    @Query("select v from Magasin v where v.name like :x")
-    public List<Magasin> findByName(@Param("x")String mc);
+//    @Query("select v from Magasin v where v.name like :x")
+//    public List<Magasin> findByName(@Param("x")String mc);
 
 
 }

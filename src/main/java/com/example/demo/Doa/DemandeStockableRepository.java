@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface DemandeStockableRepository extends JpaRepository<DemandeStockable, Long> {
 
-    @Query("select v from DemandeStockable v where v.name like :x")
-    public List<DemandeStockable> findByName(@Param("x")String mc);
+//    @Query("select v from DemandeStockable v where v.name like :x")
+//    public List<DemandeStockable> findByName(@Param("x")String mc);
 
 
 }

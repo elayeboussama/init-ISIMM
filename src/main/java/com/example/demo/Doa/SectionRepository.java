@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface SectionRepository extends JpaRepository<Section, Long> {
 
-    @Query("select s from Section s where s.name like :x")
-    public List<Section> findByName(@Param("x")String mc);
+//    @Query("select s from Section s where s.name like :x")
+//    public List<Section> findByName(@Param("x")String mc);
 
 
 }

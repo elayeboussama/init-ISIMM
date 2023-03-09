@@ -10,7 +10,7 @@ public class DemandeUnstockable implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "id_demande_unstockable", nullable = false)
+    @Column(name = "idDemandeUnstockable", nullable = false)
     private Long idDemandeUnstockable;
 
     @Column()
@@ -24,7 +24,9 @@ public class DemandeUnstockable implements Serializable {
     @OneToMany(mappedBy = "demandeUnstockable",fetch=FetchType.LAZY)
     private Set<Stockable> stockables;
 
+    public DemandeUnstockable() {
 
+    }
     public DemandeUnstockable(int quantite, DemandeStockable demandeStockable, Set<Stockable> stockables) {
         this.quantite = quantite;
         this.demandeStockable = demandeStockable;

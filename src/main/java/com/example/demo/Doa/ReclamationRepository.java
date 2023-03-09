@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface ReclamationRepository extends JpaRepository<Reclamation, Long> {
 
-    @Query("select v from Reclamation v where v.name like :x")
-    public List<Reclamation> findByName(@Param("x")String mc);
+//    @Query("select v from Reclamation v where v.name like :x")
+//    public List<Reclamation> findByName(@Param("x")String mc);
 
 
 }

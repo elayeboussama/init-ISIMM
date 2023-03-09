@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface VoeuxRepository extends JpaRepository<Voeux, Long> {
 
-    @Query("select v from Voeux v where v.name like :x")
-    public List<Voeux> findByName(@Param("x")String mc);
+//    @Query("select v from Voeux v where v.name like :x")
+//    public List<Voeux> findByName(@Param("x")String mc);
 
 
 }

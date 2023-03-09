@@ -7,17 +7,15 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
+@Table(name="Etudiant")
 public class Etudiant extends Personne {
-    @Id
-    @GeneratedValue
-    @Column(name = "id_etudiant", nullable = false)
-    private Long idEtudiant;
+
 
     @OneToMany(mappedBy = "etudiant",fetch=FetchType.LAZY)
     private Set<Note> notes;
 
-    public Etudiant(String cin, String nom, String prénom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, Set<Note> notes) {
-        super(cin, nom, prénom, naissance, sexe, adresse, password, email, telephone, age);
+    public Etudiant(String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, Set<Note> notes) {
+        super(cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age);
          this.notes = notes;
     }
 

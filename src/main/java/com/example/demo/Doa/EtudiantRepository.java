@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface EtudiantRepository extends JpaRepository<Etudiant, Long> {
 
-    @Query("select v from Etudiant v where v.name like :x")
-    public List<Etudiant> findByName(@Param("x")String mc);
+//    @Query("select v from Etudiant v where v.name like :x")
+//    public List<Etudiant> findByName(@Param("x")String mc);
 
 
 }

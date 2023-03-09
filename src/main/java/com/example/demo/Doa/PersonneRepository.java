@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface PersonneRepository extends JpaRepository<Personne, Long> {
 
-    @Query("select v from Personne v where v.name like :x")
-    public List<Personne> findByName(@Param("x")String mc);
+//    @Query("select v from Personne v where v.name like :x")
+//    public List<Personne> findByName(@Param("x")String mc);
 
 
 }

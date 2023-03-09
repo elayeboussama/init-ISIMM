@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface SemestreRepository extends JpaRepository<Semestre, Long> {
 
-    @Query("select s from Semestre s where s.name like :x")
-    public List<Semestre> findByName(@Param("x")String mc);
+//    @Query("select s from Semestre s where s.name like :x")
+//    public List<Semestre> findByName(@Param("x")String mc);
 
 
 }

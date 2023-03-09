@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface EmployerRepository extends JpaRepository<Employer, Long> {
 
-    @Query("select v from Employer v where v.name like :x")
-    public List<Employer> findByName(@Param("x")String mc);
+//    @Query("select v from Employer v where v.name like :x")
+//    public List<Employer> findByName(@Param("x")String mc);
 
 
 }

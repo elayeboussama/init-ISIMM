@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface EnseignantRepository extends JpaRepository<Enseignant, Long> {
 
-    @Query("select e from Enseignant e where e.name like :x")
-    public List<Enseignant> findByName(@Param("x")String mc);
+//    @Query("select e from Enseignant e where e.name like :x")
+//    public List<Enseignant> findByName(@Param("x")String mc);
 
 
 }

@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface TDRepository extends JpaRepository<TD, Long> {
 
-    @Query("select t from TD t where t.name like :x")
-    public List<TD> findByName(@Param("x")String mc);
+//    @Query("select t from TD t where t.name like :x")
+//    public List<TD> findByName(@Param("x")String mc);
 
 
 }

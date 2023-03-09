@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface DiplomeRepository extends JpaRepository<Diplome, Long> {
 
-    @Query("select d from Diplome d where d.name like :x")
-    public List<Diplome> findByName(@Param("x")String mc);
+//    @Query("select d from Diplome d where d.name like :x")
+//    public List<Diplome> findByName(@Param("x")String mc);
 
 
 }

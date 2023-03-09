@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface TPRepository extends JpaRepository<TP, Long> {
 
-    @Query("select t from TP t where t.name like :x")
-    public List<TP> findByName(@Param("x")String mc);
+//    @Query("select t from TP t where t.name like :x")
+//    public List<TP> findByName(@Param("x")String mc);
 
 
 }

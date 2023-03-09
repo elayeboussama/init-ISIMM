@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface DepartementRepository extends JpaRepository<Department, Long> {
 
-    @Query("select v from Department v where v.name like :x")
-    public List<Department> findByName(@Param("x")String mc);
+//    @Query("select v from Department v where v.name like :x")
+//    public List<Department> findByName(@Param("x")String mc);
 
 
 }

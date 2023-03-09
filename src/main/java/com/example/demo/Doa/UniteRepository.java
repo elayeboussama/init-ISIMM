@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface UniteRepository extends JpaRepository<Unite, Long> {
 
-    @Query("select u from Unite u where u.name like :x")
-    public List<Unite> findByName(@Param("x")String mc);
+//    @Query("select u from Unite u where u.name like :x")
+//    public List<Unite> findByName(@Param("x")String mc);
 
 
 }

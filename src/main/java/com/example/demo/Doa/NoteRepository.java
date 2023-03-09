@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
-    @Query("select v from Note v where v.name like :x")
-    public List<Note> findByName(@Param("x")String mc);
+    //    @Query("select v from Note v where v.name like :x")
+//    public List<Note> findByName(@Param("x")String mc);
 
 
 }
