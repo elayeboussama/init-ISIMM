@@ -31,9 +31,7 @@ public class DemandeConger implements Serializable {
     private StaffAdministratif SA;
 
 
-    public enum etat{ACCEPTE, ATTENTE, REFUSE}
-    public enum cause{MALADIE, MATERNITE, PATERNITE,CORONA }
-    public enum typecongé{PAYE ,SANSSOLDE}
+
 
     private cause type;
     private typecongé Typecongé;

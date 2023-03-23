@@ -29,6 +29,10 @@ public class Unite implements Serializable {
     @OneToMany(mappedBy = "unite",fetch=FetchType.LAZY)
     private Set<Matiere> matieres;
 
+    private float coef;
+
+    private float credit;
+
 
     public Unite(String name, Set<Matiere> matieres, Set<Semestre> semestres) {
         this.name = name;

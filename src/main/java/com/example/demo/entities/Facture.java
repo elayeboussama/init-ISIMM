@@ -19,6 +19,8 @@ public class Facture implements Serializable {
 
     private Date dateFacrutation;
 
+    public Facture() {
+    }
 
     @ManyToMany
     Set<FactureStockable> factureStockables;

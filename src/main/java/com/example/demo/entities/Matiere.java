@@ -16,23 +16,15 @@ public class Matiere implements Serializable {
     @Column(length = 100)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="SA")
-    private StaffAdministratif SA;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="SA")
+//    private StaffAdministratif SA;
     private float credit;
 
     private float coeff;
 
 
     private int code;
-
-
-
-
-
-
-
-
 
     private int nbHCr;
     private int nbHTd;
@@ -89,13 +81,7 @@ public class Matiere implements Serializable {
         this.name = name;
     }
 
-    public StaffAdministratif getSA() {
-        return SA;
-    }
 
-    public void setSA(StaffAdministratif SA) {
-        this.SA = SA;
-    }
 
     public float getCredit() {
         return credit;

@@ -11,6 +11,12 @@ import java.util.Set;
 public class Etudiant extends Personne {
 
 
+    @ManyToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name="td")
+    private TD td;
+
+
+
     @OneToMany(mappedBy = "etudiant",fetch=FetchType.LAZY)
     private Set<Note> notes;
 

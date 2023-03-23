@@ -20,7 +20,28 @@ public class Fournisseur implements Serializable {
     @ManyToMany
     Set<Facture> factures;
 
+    public Fournisseur(String name, Set<Facture> factures) {
+        this.name = name;
+        this.factures = factures;
+    }
 
+    public Fournisseur() {}
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Facture> getFactures() {
+        return factures;
+    }
+
+    public void setFactures(Set<Facture> factures) {
+        this.factures = factures;
+    }
 }
 //Constructors
 

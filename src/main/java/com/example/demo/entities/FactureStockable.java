@@ -22,7 +22,8 @@ public class FactureStockable implements Serializable {
     @Column
     private float tva;
 
-
+    public FactureStockable() {
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_demande_unstockable")

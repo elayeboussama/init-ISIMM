@@ -17,6 +17,8 @@ public class TD implements Serializable {
     private String name;
 
 
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="tds")
     private Section section;
@@ -24,7 +26,8 @@ public class TD implements Serializable {
     @OneToMany(mappedBy = "td", fetch = FetchType.LAZY)
     private Set<TP> tps;
 
-
+    @OneToMany(mappedBy = "td", fetch = FetchType.LAZY)
+    private Set<Etudiant> etudiants;
 
     public TD() {
 

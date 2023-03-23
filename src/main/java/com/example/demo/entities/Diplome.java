@@ -26,7 +26,7 @@ public class Diplome implements Serializable {
 
     }
 
-    public Diplome(String name, Set<Niveau> niveau) {
+    public Diplome(String nom, Set<Niveau> niveau) {
         this.nom = nom;
         this.niveau = niveau;
     }

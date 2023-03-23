@@ -27,18 +27,18 @@ public class Enseignant extends Employer  {
 
     public enum Grade{MAITRE, ASSISTANT,PROF }
 
-    private float NombreHeur;
-    private String NiveauEnseigné;
+    private float NombreHeures;
+    private String NiveauEnseigne;
     private Grade grade ;
 
 
     public Enseignant() {
 
     }
-    public Enseignant(float NombreHeur, String NiveauEnseigné, Grade grade , Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prénom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire) {
+    public Enseignant(float NombreHeures, String NiveauEnseigné, Grade grade , Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prénom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire) {
         super(department, demandeConger, demandeStockable, cin, nom, prénom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
-        this.NombreHeur = NombreHeur;
-        this.NiveauEnseigné = NiveauEnseigné;
+        this.NombreHeures = NombreHeures;
+        this.NiveauEnseigne = NiveauEnseigne;
         this.grade = grade;
     }
 
