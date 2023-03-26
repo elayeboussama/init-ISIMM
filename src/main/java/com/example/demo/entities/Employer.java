@@ -15,16 +15,14 @@ public class Employer  extends Personne {
 //    @Column(name = "id_employer", nullable = false)
 //    private Long idEmployer;
 
-    @OneToOne
-    private Department departement;
 
-    @Column(nullable = false)
+    @Column
     private Date DateEmbauche;
-    @Column(nullable = false)
+    @Column
     private int NbJourCongeTotale;
-    @Column(nullable = false)
+    @Column
     private int NbJourCongeRestant;
-    @Column(nullable = false)
+    @Column
     private float Salaire;
 
     @ManyToMany

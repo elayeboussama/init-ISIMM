@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Personne implements Serializable {
@@ -37,7 +38,6 @@ public class Personne implements Serializable {
     public Personne() {
 
     }
-
     public Personne(String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age) {
         this.cin = cin;
         this.nom = nom;
@@ -50,6 +50,7 @@ public class Personne implements Serializable {
         this.telephone = telephone;
         this.age = age;
     }
+
 
     public String getCin() {
         return cin;

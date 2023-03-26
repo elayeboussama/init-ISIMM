@@ -4,13 +4,13 @@ import com.example.demo.entities.Voeux;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface VoeuxRepository extends JpaRepository<Voeux, Long> {
 
-//    @Query("select v from Voeux v where v.name like :x")
-//    public List<Voeux> findByName(@Param("x")String mc);
+
 
 
 }
