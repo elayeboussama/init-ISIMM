@@ -24,11 +24,11 @@ public class DemandeStockable implements Serializable {
     private Employer employer;
 
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="idService")
+    @JoinColumn(name="id_service")
     private Service service;
 
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="magasin")
+    @JoinColumn(name="id_magasin")
     private Magasin magasin;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -36,6 +36,7 @@ public class DemandeStockable implements Serializable {
     private DemandeUnstockable demandeUnstockable;
 
     @ManyToMany
+    @JoinTable(name = "demandeStockable_stockable", joinColumns = {@JoinColumn(name = "id_demandeStockable")}, inverseJoinColumns = {@JoinColumn(name = "id_stockable")})
     Set<Stockable> stockable;
 
     public DemandeStockable() {

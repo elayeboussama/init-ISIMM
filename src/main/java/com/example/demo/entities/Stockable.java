@@ -1,11 +1,15 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Stockable implements Serializable {
 
     @Id
@@ -19,6 +23,7 @@ public class Stockable implements Serializable {
 
 
     @ManyToMany
+    @JoinTable(name = "Stockable_facture_stockable", joinColumns = {@JoinColumn(name = "id_Stockable")}, inverseJoinColumns = {@JoinColumn(name = "id_facture_stockable")})
     Set<FactureStockable> factureStockables;
 
     @ManyToOne(fetch = FetchType.LAZY)

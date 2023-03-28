@@ -1,10 +1,12 @@
 package com.example.demo.entities;
 
+import com.example.demo.entities.enums.cause;
+import com.example.demo.entities.enums.etat;
+import com.example.demo.entities.enums.typecongé;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 
 @Entity
@@ -18,18 +20,18 @@ public class DemandeConger implements Serializable {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="employer")
+    @JoinColumn(name="id_employer")
     private Employer employer;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="enseignant")
-    private Enseignant enseignant;
-
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="SA")
-    private StaffAdministratif SA;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="id_enseignant")
+//    private Enseignant enseignant;
+//
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="id_SA")
+//    private StaffAdministratif SA;
 
 
 
@@ -47,14 +49,14 @@ public class DemandeConger implements Serializable {
 
     public DemandeConger( Employer employer, Enseignant enseignant, StaffAdministratif SA, cause type, typecongé typecongé, String justification, Date dateDebut, Date dateFin, etat etatDemande) {
         this.employer = employer;
-        this.enseignant = enseignant;
-        this.SA = SA;
+//        this.enseignant = enseignant;
+//        this.SA = SA;
         this.type = type;
-        Typecongé = typecongé;
-        Justification = justification;
-        DateDebut = dateDebut;
-        DateFin = dateFin;
-        EtatDemande = etatDemande;
+        this.Typecongé = typecongé;
+        this.Justification = justification;
+        this.DateDebut = dateDebut;
+        this.DateFin = dateFin;
+        this.EtatDemande = etatDemande;
     }
 
     public Employer getEmployer() {
@@ -64,22 +66,22 @@ public class DemandeConger implements Serializable {
     public void setEmployer(Employer employer) {
         this.employer = employer;
     }
-
-    public Enseignant getEnseignant() {
-        return enseignant;
-    }
-
-    public void setEnseignant(Enseignant enseignant) {
-        this.enseignant = enseignant;
-    }
-
-    public StaffAdministratif getSA() {
-        return SA;
-    }
-
-    public void setSA(StaffAdministratif SA) {
-        this.SA = SA;
-    }
+//
+//    public Enseignant getEnseignant() {
+//        return enseignant;
+//    }
+//
+//    public void setEnseignant(Enseignant enseignant) {
+//        this.enseignant = enseignant;
+//    }
+//
+//    public StaffAdministratif getSA() {
+//        return SA;
+//    }
+//
+//    public void setSA(StaffAdministratif SA) {
+//        this.SA = SA;
+//    }
 
     public cause getType() {
         return type;

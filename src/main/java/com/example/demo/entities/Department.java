@@ -1,11 +1,15 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Department implements Serializable {
 
     @Id
@@ -14,7 +18,7 @@ public class Department implements Serializable {
     private Long idDepartment;
 
     @Column(length = 100)
-    private String nom;
+    private String name;
 
 
     private String NonDepartement;
@@ -34,17 +38,17 @@ public class Department implements Serializable {
     }
 
     public Department(String name, Set<Employer> employers ) {
-        this.nom = nom;
+        this.name = name;
         this.employers = employers;
 
     }
 
     public String getNom() {
-        return nom;
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNom(String name) {
+        this.name = name;
     }
 
     public Set<Employer> getEmployers() {

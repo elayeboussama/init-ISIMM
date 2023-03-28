@@ -1,6 +1,8 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,6 +11,8 @@ import java.util.Set;
 
 @Entity
 @Table(name="StaffAdministratif")
+@Getter
+@Setter
 public class StaffAdministratif extends Employer {
 
 //    @Id

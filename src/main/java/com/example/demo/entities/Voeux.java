@@ -1,10 +1,14 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
 @Entity
+@Getter
+@Setter
 public class Voeux implements Serializable {
 
     @Id
@@ -17,10 +21,10 @@ public class Voeux implements Serializable {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="SA")
+    @JoinColumn(name="id_SA")
     private StaffAdministratif SA;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="voeux")
+    @JoinColumn(name="id_enseignant")
     private Enseignant enseignant;
 
 

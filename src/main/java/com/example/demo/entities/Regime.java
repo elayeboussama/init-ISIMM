@@ -1,12 +1,16 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Regime implements Serializable {
 
     @Id
@@ -17,7 +21,11 @@ public class Regime implements Serializable {
     @Column(length = 100)
     private String name;
 
-
+    private int coeffCr;
+    private int coeffTd;
+    private int coeffTp;
+    private int coeffCri;
+    private int coeffNp;
 
     private int nbHCr;
     private int nbHTd;
@@ -30,22 +38,29 @@ public class Regime implements Serializable {
 
 
     @OneToMany(mappedBy = "regime",fetch=FetchType.LAZY)
-    public Set<Matiere> matieresRegim;
+    public Set<Matiere> matieres;
 
 
     public Regime() {
 
     }
 
-    public Regime(String name, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Set<Matiere> matieres) {
+    public Regime(String name, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Set<Matiere> matieres) {
         this.name = name;
+        this.coeffCr = coeffCr;
+        this.coeffTd = coeffTd;
+        this.coeffTp = coeffTp;
+        this.coeffCri = coeffCri;
+        this.coeffNp = coeffNp;
         this.nbHCr = nbHCr;
         this.nbHTd = nbHTd;
         this.nbHTp = nbHTp;
         this.nbHCri = nbHCri;
         this.nbHNp = nbHNp;
-        this.matieresRegim = matieres;
+        this.matieres = matieres;
     }
+
+
 
     public String getName() {
         return name;
@@ -96,11 +111,51 @@ public class Regime implements Serializable {
     }
 
     public Set<Matiere> getMatieres() {
-        return matieresRegim;
+        return matieres;
     }
 
     public void setMatieres(Set<Matiere> matieres) {
-        this.matieresRegim = matieres;
+        this.matieres = matieres;
+    }
+
+    public int getCoeffCr() {
+        return coeffCr;
+    }
+
+    public void setCoeffCr(int coeffCr) {
+        this.coeffCr = coeffCr;
+    }
+
+    public int getCoeffTd() {
+        return coeffTd;
+    }
+
+    public void setCoeffTd(int coeffTd) {
+        this.coeffTd = coeffTd;
+    }
+
+    public int getCoeffTp() {
+        return coeffTp;
+    }
+
+    public void setCoeffTp(int coeffTp) {
+        this.coeffTp = coeffTp;
+    }
+
+    public int getCoeffCri() {
+        return coeffCri;
+    }
+
+    public void setCoeffCri(int coeffCri) {
+        this.coeffCri = coeffCri;
+    }
+
+    public int getCoeffNp() {
+        return coeffNp;
+    }
+
+    public void setCoeffNp(int coeffNp) {
+        this.coeffNp = coeffNp;
     }
 }
 //Constructors

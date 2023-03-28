@@ -1,12 +1,17 @@
 package com.example.demo.entities;
 
+import com.example.demo.entities.enums.devoirTypes;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Note implements Serializable {
 
     @Id
@@ -16,28 +21,28 @@ public class Note implements Serializable {
 
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="SA")
-    private StaffAdministratif SA;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="SA")
+//    private StaffAdministratif SA;
 
-    @OneToMany(mappedBy = "note",fetch=FetchType.LAZY)
-    private Set<Reclamation> reclamations;
+//    @OneToMany(mappedBy = "note",fetch=FetchType.LAZY)
+//    private Set<Reclamation> reclamations;
 
     @ManyToOne()
-    @JoinColumn(name="matiere")
+    @JoinColumn(name="id_matiere")
     private Matiere matiere;
 
     @ManyToOne()
-    @JoinColumn(name="etudiant")
+    @JoinColumn(name="id_etudiant")
     private Etudiant etudiant;
 
     @ManyToOne()
-    @JoinColumn(name="enseingant")
+    @JoinColumn(name="id_enseingant")
     private Enseignant enseingant;
 
-    public enum typeNote{DS, EX, TP, ORAL }
 
-    private typeNote type;
+    @Column
+    private devoirTypes type;
 
 private float note;
 private Date date;
@@ -45,9 +50,9 @@ private Date date;
 
     }
 
-    public Note(StaffAdministratif SA, Set<Reclamation> reclamations, Matiere matiere, Etudiant etudiant, Enseignant enseingant, typeNote type, float note, Date date) {
-        this.SA = SA;
-        this.reclamations = reclamations;
+    public Note( Matiere matiere, Etudiant etudiant, Enseignant enseingant, devoirTypes type, float note, Date date) {
+//        this.SA = SA;
+//        this.reclamations = reclamations;
         this.matiere = matiere;
         this.etudiant = etudiant;
         this.enseingant = enseingant;
@@ -57,21 +62,21 @@ private Date date;
     }
 
 
-    public StaffAdministratif getSA() {
-        return SA;
-    }
+//    public StaffAdministratif getSA() {
+//        return SA;
+//    }
+//
+//    public void setSA(StaffAdministratif SA) {
+//        this.SA = SA;
+//    }
 
-    public void setSA(StaffAdministratif SA) {
-        this.SA = SA;
-    }
-
-    public Set<Reclamation> getReclamations() {
-        return reclamations;
-    }
-
-    public void setReclamations(Set<Reclamation> reclamations) {
-        this.reclamations = reclamations;
-    }
+//    public Set<Reclamation> getReclamations() {
+//        return reclamations;
+//    }
+//
+//    public void setReclamations(Set<Reclamation> reclamations) {
+//        this.reclamations = reclamations;
+//    }
 
     public Matiere getMatiere() {
         return matiere;
@@ -97,11 +102,11 @@ private Date date;
         this.enseingant = enseingant;
     }
 
-    public typeNote getType() {
+    public devoirTypes getType() {
         return type;
     }
 
-    public void setType(typeNote type) {
+    public void setType(devoirTypes type) {
         this.type = type;
     }
 
