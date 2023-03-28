@@ -4,8 +4,10 @@ import com.example.demo.entities.enums.devoirTypes;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -20,6 +22,12 @@ public class Reclamation implements Serializable {
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="id_etudiant", nullable = false)
     private Etudiant etudiant;
+
+
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date creationDateTime;
 
     @Column
     private String message;
