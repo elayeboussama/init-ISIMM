@@ -1,11 +1,15 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class DemandeUnstockable implements Serializable {
 
     @Id
@@ -30,30 +34,10 @@ public class DemandeUnstockable implements Serializable {
     public DemandeUnstockable(int quantite, DemandeStockable demandeStockable, Set<Stockable> stockables) {
         this.quantite = quantite;
         this.demandeStockable = demandeStockable;
-        this.stockables = stockables;
     }
 
-    public int getQuantite() {
-        return quantite;
-    }
+    public void addStockable(Stockable stockable) {
+        this.stockables.add(stockable);
 
-    public void setQuantite(int quantite) {
-        this.quantite = quantite;
-    }
-
-    public DemandeStockable getDemandeStockable() {
-        return demandeStockable;
-    }
-
-    public void setDemandeStockable(DemandeStockable demandeStockable) {
-        this.demandeStockable = demandeStockable;
-    }
-
-    public Set<Stockable> getStockables() {
-        return stockables;
-    }
-
-    public void setStockables(Set<Stockable> stockables) {
-        this.stockables = stockables;
     }
 }

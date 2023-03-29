@@ -43,23 +43,8 @@ public class Department implements Serializable {
 
     }
 
-    public String getNom() {
-        return name;
-    }
+    public void addEmployer(Employer employer) {
+        this.employers.add(employer);
 
-    public void setNom(String name) {
-        this.name = name;
     }
-
-    public Set<Employer> getEmployers() {
-        return employers;
-    }
-
-    public void setEmployers(Set<Employer> employers) {
-        this.employers = employers;
-    }
-
 }
-//Constructors
-
-//Getters and Setters
