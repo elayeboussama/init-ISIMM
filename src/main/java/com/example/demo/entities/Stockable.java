@@ -48,45 +48,7 @@ public class Stockable implements Serializable {
         this.service = service;
     }
 
-    public String getNom() {
-        return nom;
-    }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public Set<FactureStockable> getFactureStockables() {
-        return factureStockables;
-    }
-
-    public void setFactureStockables(Set<FactureStockable> factureStockables) {
-        this.factureStockables = factureStockables;
-    }
-
-    public DemandeUnstockable getDemandeUnstockable() {
-        return demandeUnstockable;
-    }
-
-    public void setDemandeUnstockable(DemandeUnstockable demandeUnstockable) {
-        this.demandeUnstockable = demandeUnstockable;
-    }
-
-    public Magasin getMagasin() {
-        return magasin;
-    }
-
-    public void setMagasin(Magasin magasin) {
-        this.magasin = magasin;
-    }
-
-    public Service getService() {
-        return service;
-    }
-
-    public void setService(Service service) {
-        this.service = service;
-    }
 }
 //Constructors
 

@@ -1,11 +1,15 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class DemandeStockable implements Serializable {
 
     @Id
@@ -49,62 +53,10 @@ public class DemandeStockable implements Serializable {
         this.service = service;
         this.magasin = magasin;
         this.demandeUnstockable = demandeUnstockable;
-        this.stockable = stockable;
+    }
+    public void addStockable(Stockable stockable) {
+        this.stockable.add(stockable);
+
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getEtat() {
-        return etat;
-    }
-
-    public void setEtat(String etat) {
-        this.etat = etat;
-    }
-
-    public Employer getEmployer() {
-        return employer;
-    }
-
-    public void setEmployer(Employer employer) {
-        this.employer = employer;
-    }
-
-    public Service getService() {
-        return service;
-    }
-
-    public void setService(Service service) {
-        this.service = service;
-    }
-
-    public Magasin getMagasin() {
-        return magasin;
-    }
-
-    public void setMagasin(Magasin magasin) {
-        this.magasin = magasin;
-    }
-
-    public DemandeUnstockable getDemandeUnstockable() {
-        return demandeUnstockable;
-    }
-
-    public void setDemandeUnstockable(DemandeUnstockable demandeUnstockable) {
-        this.demandeUnstockable = demandeUnstockable;
-    }
-
-    public Set<Stockable> getStockable() {
-        return stockable;
-    }
-
-    public void setStockable(Set<Stockable> stockable) {
-        this.stockable = stockable;
-    }
 }
