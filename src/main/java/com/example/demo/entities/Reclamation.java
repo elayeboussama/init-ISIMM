@@ -51,6 +51,15 @@ public class Reclamation implements Serializable {
 
     }
 
+    public Reclamation(Etudiant etudiant, Date creationDateTime, String message, String statut, int codeMatiere, devoirTypes typeNote) {
+        this.etudiant = etudiant;
+        this.creationDateTime = creationDateTime;
+        this.message = message;
+        this.statut = statut;
+        this.codeMatiere = codeMatiere;
+        this.typeNote = typeNote;
+    }
+
     public Reclamation(String message, String statut) {
 //        this.note = note;
         this.message = message;
@@ -58,30 +67,6 @@ public class Reclamation implements Serializable {
     }
 
 
-//    public Note getNote() {
-//        return note;
-//    }
-//
-//    public void setNote(Note note) {
-//        this.note = note;
-//    }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getStatut() {
-        return statut;
-    }
-
-    public void setStatut(String statut) {
-        this.statut = statut;
-    }
 }
-//Constructors
 
-//Getters and Setters

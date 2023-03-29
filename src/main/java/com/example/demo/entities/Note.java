@@ -20,14 +20,6 @@ public class Note implements Serializable {
     private Long idNote;
 
 
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name="SA")
-//    private StaffAdministratif SA;
-
-//    @OneToMany(mappedBy = "note",fetch=FetchType.LAZY)
-//    private Set<Reclamation> reclamations;
-
     @ManyToOne()
     @JoinColumn(name="id_matiere")
     private Matiere matiere;
@@ -50,9 +42,8 @@ private Date date;
 
     }
 
-    public Note( Matiere matiere, Etudiant etudiant, Enseignant enseingant, devoirTypes type, float note, Date date) {
-//        this.SA = SA;
-//        this.reclamations = reclamations;
+    public Note(Matiere matiere, Etudiant etudiant, Enseignant enseingant, devoirTypes type, float note, Date date) {
+
         this.matiere = matiere;
         this.etudiant = etudiant;
         this.enseingant = enseingant;
@@ -61,71 +52,5 @@ private Date date;
         this.date = date;
     }
 
-
-//    public StaffAdministratif getSA() {
-//        return SA;
-//    }
-//
-//    public void setSA(StaffAdministratif SA) {
-//        this.SA = SA;
-//    }
-
-//    public Set<Reclamation> getReclamations() {
-//        return reclamations;
-//    }
-//
-//    public void setReclamations(Set<Reclamation> reclamations) {
-//        this.reclamations = reclamations;
-//    }
-
-    public Matiere getMatiere() {
-        return matiere;
-    }
-
-    public void setMatiere(Matiere matiere) {
-        this.matiere = matiere;
-    }
-
-    public Etudiant getEtudiant() {
-        return etudiant;
-    }
-
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
-    }
-
-    public Enseignant getEnseingant() {
-        return enseingant;
-    }
-
-    public void setEnseingant(Enseignant enseingant) {
-        this.enseingant = enseingant;
-    }
-
-    public devoirTypes getType() {
-        return type;
-    }
-
-    public void setType(devoirTypes type) {
-        this.type = type;
-    }
-
-    public float getNote() {
-        return note;
-    }
-
-    public void setNote(float note) {
-        this.note = note;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 }
-//Constructors
 
-//Getters and Setters

@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.example.demo.entities.enums.grade;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,31 +24,46 @@ public class Enseignant extends Employer  {
     @OneToMany(mappedBy="enseignant",fetch=FetchType.LAZY)
     private Set<Voeux> voeux;
 
-
-
     private Set<EnseignantMatiere> enseignantMatiere = new HashSet<EnseignantMatiere>();
 
 
     @OneToMany(mappedBy = "enseingant",fetch=FetchType.LAZY)
     private Set<Note> notes;
 
-    public enum Grade{MAITRE, ASSISTANT,PROF }
+
 
     private float NombreHeures;
 
-    private Grade grade ;
+    private grade gradeEnseignant ;
 
 
     public Enseignant() {
 
     }
-    public Enseignant(float NombreHeures, String NiveauEnseigné, Grade grade , Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prénom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire) {
-        super(department, demandeConger, demandeStockable, cin, nom, prénom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
-        this.NombreHeures = NombreHeures;
 
-        this.grade = grade;
+
+    public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, grade gradeEnseignant) {
+        super(department, demandeConger, demandeStockable, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
+        this.voeux = voeux;
+        this.enseignantMatiere = enseignantMatiere;
+        this.notes = notes;
+        this.NombreHeures = nombreHeures;
+        this.gradeEnseignant = gradeEnseignant;
     }
 
+    public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, float nombreHeures, grade gradeEnseignant) {
+        super(department, demandeConger, demandeStockable, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
+        this.NombreHeures = nombreHeures;
+        this.gradeEnseignant = gradeEnseignant;
+    }
+
+    public Enseignant(Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, grade gradeEnseignant) {
+        this.voeux = voeux;
+        this.enseignantMatiere = enseignantMatiere;
+        this.notes = notes;
+        this.NombreHeures = nombreHeures;
+        this.gradeEnseignant = gradeEnseignant;
+    }
 
     public Set<Voeux> getVoeux() {
         return voeux;
@@ -66,16 +82,22 @@ public class Enseignant extends Employer  {
         this.enseignantMatiere = enseignantMatiere;
     }
 
-    public Set<Note> getNotes() {
-        return notes;
+
+
+    public void addVoeux(Voeux voeux) {
+        this.voeux.add(voeux);
+        //voeux.setEnseignant(this);
     }
 
-    public void setNotes(Set<Note> notes) {
-        this.notes = notes;
+    public void addEnseignantMatiere(EnseignantMatiere enseignantMatiere) {
+        this.enseignantMatiere.add(enseignantMatiere);
+        //enseignantMatiere.setEnseignant(this);
+    }
+
+    public void addNote(Note note) {
+        this.notes.add(note);
+        //note.setEnseignant(this);
     }
 
 
 }
-//Constructors
-
-//Getters and Setters

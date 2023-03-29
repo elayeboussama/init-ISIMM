@@ -20,12 +20,8 @@ public class Unite implements Serializable {
     @Column(length = 100)
     private String name;
 
-
-
-
     @ManyToMany
     private Set<Semestre> semestres;
-
 
     public Unite() {
 

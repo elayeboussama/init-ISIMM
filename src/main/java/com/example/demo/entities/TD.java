@@ -20,9 +20,6 @@ public class TD implements Serializable {
     @Column(length = 100)
     private String name;
 
-
-
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="tds")
     private Section section;

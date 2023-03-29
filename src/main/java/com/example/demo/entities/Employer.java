@@ -58,68 +58,7 @@ public class Employer  extends Personne {
     public Employer() {
     }
 
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public Set<DemandeConger> getDemandeConger() {
-        return demandeConger;
-    }
-
-    public void setDemandeConger(Set<DemandeConger> demandeConger) {
-        this.demandeConger = demandeConger;
-    }
     
 
-    public Set<DemandeStockable> getDemandeStockable() {
-        return demandeStockable;
-    }
 
-    public void setDemandeStockable(Set<DemandeStockable> demandeStockable) {
-        this.demandeStockable = demandeStockable;
-    }
-
-    public Date getDateEmbauche() {
-        return DateEmbauche;
-    }
-
-    public void setDateEmbauche(Date dateEmbauche) {
-        DateEmbauche = dateEmbauche;
-    }
-
-    public int getNbJourCongeTotale() {
-        return NbJourCongeTotale;
-    }
-
-    public void setNbJourCongeTotale(int nbJourCongeTotale) {
-        NbJourCongeTotale = nbJourCongeTotale;
-    }
-
-    public int getNbJourCongeRestant() {
-        return NbJourCongeRestant;
-    }
-
-    public void setNbJourCongeRestant(int nbJourCongeRestant) {
-        NbJourCongeRestant = nbJourCongeRestant;
-    }
-
-    public float getSalaire() {
-        return Salaire;
-    }
-
-    public void setSalaire(float salaire) {
-        Salaire = salaire;
-    }
-
-    public Set<Service> getServices() {
-        return services;
-    }
-
-    public void setServices(Set<Service> services) {
-        this.services = services;
-    }
 }

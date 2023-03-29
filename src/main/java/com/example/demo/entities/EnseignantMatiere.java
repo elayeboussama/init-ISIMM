@@ -81,6 +81,4 @@ public class EnseignantMatiere implements Serializable {
         this.groupId = groupId;
     }
 }
-//Constructors
 
-//Getters and Setters
