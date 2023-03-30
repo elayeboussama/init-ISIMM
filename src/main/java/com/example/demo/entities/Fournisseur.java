@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -29,6 +30,11 @@ public class Fournisseur implements Serializable {
         this.factures = factures;
     }
 
+    public Fournisseur(String name ) {
+        this.name = name;
+        this.factures  = new HashSet<>();
+    }
+
     public Fournisseur() {}
 
     public String getName() {
@@ -39,12 +45,10 @@ public class Fournisseur implements Serializable {
         this.name = name;
     }
 
-    public Set<Facture> getFactures() {
-        return factures;
-    }
 
-    public void setFactures(Set<Facture> factures) {
-        this.factures = factures;
+
+    public void addFacture(Facture facture) {
+        this.factures.add(facture);
     }
 }
 //Constructors

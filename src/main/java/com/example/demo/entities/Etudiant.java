@@ -1,5 +1,8 @@
 package com.example.demo.entities;
 
+import com.example.demo.entities.enums.Sexe;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,29 +18,37 @@ import java.util.Set;
 @Setter
 public class Etudiant extends Personne {
 
-
+    @JsonBackReference
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="id_td")
     private TD td;
-
+    @JsonBackReference
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="id_tp")
     private TP tp;
 
     @OneToMany(mappedBy = "etudiant",fetch=FetchType.LAZY)
-    private Set<Reclamation> reclamations = new HashSet<Reclamation>();;
+    @JsonManagedReference
+    private Set<Reclamation> reclamations;
 
     @OneToMany(mappedBy = "etudiant",fetch=FetchType.LAZY)
-    private Set<Note> notes = new HashSet<Note>();
+    @JsonManagedReference
+    private Set<Note> notes;
+
+    public Etudiant(String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, TD td, TP tp, Set<Note> notes, Set<Reclamation> reclamations) {
+        super(cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age);
+        this.td = td;
+        this.tp = tp;
+        this.notes = notes;
+        this.reclamations = reclamations;
+    }
 
     public Etudiant(String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, TD td, TP tp) {
         super(cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age);
         this.td = td;
         this.tp = tp;
-    }
-    public Etudiant(String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age ) {
-        super(cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age);
-
+        this.notes = new HashSet<Note>();
+        this.reclamations = new HashSet<Reclamation>();
     }
 
     public Etudiant() {

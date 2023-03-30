@@ -1,10 +1,13 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -21,10 +24,12 @@ public class Section implements Serializable {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="semestre")
+    @JoinColumn(name="id_semestre")
+    @JsonBackReference
     private Semestre semestre;
 
     @OneToMany(mappedBy = "section", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<TD> tds;
 
 
@@ -40,30 +45,14 @@ public class Section implements Serializable {
         this.tds = tds;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Section(String name, Semestre semestre) {
         this.name = name;
-    }
-
-    public Semestre getSemestre() {
-        return semestre;
-    }
-
-    public void setSemestre(Semestre semestre) {
         this.semestre = semestre;
+        this.tds = new HashSet<>();
     }
 
-    public Set<TD> getTds() {
-        return tds;
-    }
-
-    public void setTds(Set<TD> tds) {
-        this.tds = tds;
+    public void addTd(TD td) {
+        this.tds.add(td);
     }
 }
-//Constructors
 
-//Getters and Setters

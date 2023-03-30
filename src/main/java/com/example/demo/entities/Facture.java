@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,16 +24,25 @@ public class Facture implements Serializable {
 
     private Date dateFacrutation;
 
-    public Facture() {
-    }
+
 
     @ManyToMany
     Set<FactureStockable> factureStockables;
+
+
+    public Facture() {
+    }
 
     public Facture(String adresseFacturation, Date dateFacrutation, Set<FactureStockable> factureStockables) {
         this.adresseFacturation = adresseFacturation;
         this.dateFacrutation = dateFacrutation;
         this.factureStockables = factureStockables;
+    }
+
+    public Facture(String adresseFacturation, Date dateFacrutation ) {
+        this.adresseFacturation = adresseFacturation;
+        this.dateFacrutation = dateFacrutation;
+        this.factureStockables = new HashSet<>();
     }
 
     public String getAdresseFacturation() {
@@ -57,6 +67,10 @@ public class Facture implements Serializable {
 
     public void setFactureStockables(Set<FactureStockable> factureStockables) {
         this.factureStockables = factureStockables;
+    }
+
+    public void addFactureStockables(FactureStockable factureStockable) {
+        this.factureStockables.add(factureStockable);
     }
 }
 //Constructors

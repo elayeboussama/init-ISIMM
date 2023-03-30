@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +9,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -29,6 +31,7 @@ public class Emploi implements Serializable {
     private Date dateFin;
 
     @OneToMany(mappedBy = "emploi",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Seance> seances;
 
     public Emploi(Date dateDebut, Date dateFin, Set<Seance> seances) {
@@ -37,10 +40,13 @@ public class Emploi implements Serializable {
         this.seances = seances;
     }
 
-    public Emploi(Date dateDebut, Date dateFin) {
+    public Emploi(Date dateDebut, Date dateFin ) {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
+        this.seances  = new HashSet<>();
     }
+
+
 
     public Emploi() {
     }
@@ -48,7 +54,6 @@ public class Emploi implements Serializable {
 
     public void addSeance(Seance seance) {
         this.seances.add(seance);
-        //seance.setEmploi(this);
     }
 
 

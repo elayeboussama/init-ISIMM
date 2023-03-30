@@ -1,5 +1,5 @@
 package com.example.demo.entities.enums;
 
-public enum typecongé {
+public enum TypeCongé {
     PAYE ,SANSSOLDE
 }

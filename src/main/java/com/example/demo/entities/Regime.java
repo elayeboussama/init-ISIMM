@@ -1,11 +1,13 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -38,12 +40,14 @@ public class Regime implements Serializable {
 
 
     @OneToMany(mappedBy = "regime",fetch=FetchType.LAZY)
+    @JsonManagedReference
     public Set<Matiere> matieres;
 
 
     public Regime() {
 
     }
+
 
     public Regime(String name, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Set<Matiere> matieres) {
         this.name = name;
@@ -60,104 +64,23 @@ public class Regime implements Serializable {
         this.matieres = matieres;
     }
 
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Regime(String name, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp) {
         this.name = name;
-    }
-
-    public int getNbHCr() {
-        return nbHCr;
-    }
-
-    public void setNbHCr(int nbHCr) {
-        this.nbHCr = nbHCr;
-    }
-
-    public int getNbHTd() {
-        return nbHTd;
-    }
-
-    public void setNbHTd(int nbHTd) {
-        this.nbHTd = nbHTd;
-    }
-
-    public int getNbHTp() {
-        return nbHTp;
-    }
-
-    public void setNbHTp(int nbHTp) {
-        this.nbHTp = nbHTp;
-    }
-
-    public int getNbHCri() {
-        return nbHCri;
-    }
-
-    public void setNbHCri(int nbHCri) {
-        this.nbHCri = nbHCri;
-    }
-
-    public int getNbHNp() {
-        return nbHNp;
-    }
-
-    public void setNbHNp(int nbHNp) {
-        this.nbHNp = nbHNp;
-    }
-
-    public Set<Matiere> getMatieres() {
-        return matieres;
-    }
-
-    public void setMatieres(Set<Matiere> matieres) {
-        this.matieres = matieres;
-    }
-
-    public int getCoeffCr() {
-        return coeffCr;
-    }
-
-    public void setCoeffCr(int coeffCr) {
         this.coeffCr = coeffCr;
-    }
-
-    public int getCoeffTd() {
-        return coeffTd;
-    }
-
-    public void setCoeffTd(int coeffTd) {
         this.coeffTd = coeffTd;
-    }
-
-    public int getCoeffTp() {
-        return coeffTp;
-    }
-
-    public void setCoeffTp(int coeffTp) {
         this.coeffTp = coeffTp;
-    }
-
-    public int getCoeffCri() {
-        return coeffCri;
-    }
-
-    public void setCoeffCri(int coeffCri) {
         this.coeffCri = coeffCri;
-    }
-
-    public int getCoeffNp() {
-        return coeffNp;
-    }
-
-    public void setCoeffNp(int coeffNp) {
         this.coeffNp = coeffNp;
+        this.nbHCr = nbHCr;
+        this.nbHTd = nbHTd;
+        this.nbHTp = nbHTp;
+        this.nbHCri = nbHCri;
+        this.nbHNp = nbHNp;
+        this.matieres = new HashSet<>();
+    }
+
+    public void addMatiere(Matiere matiere) {
+        this.matieres.add(matiere);
     }
 }
-//Constructors
 
-//Getters and Setters

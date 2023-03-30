@@ -1,5 +1,5 @@
 package com.example.demo.entities.enums;
 
-public enum grade {
+public enum Grade {
      MAITRE, ASSISTANT,PROF
 }

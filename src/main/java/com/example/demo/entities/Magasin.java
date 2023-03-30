@@ -1,10 +1,12 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -21,10 +23,12 @@ public class Magasin implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "magasin",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<DemandeStockable> demandeStockables;
 
 
     @OneToMany(mappedBy = "magasin",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Stockable> stockables;
 
 
@@ -38,6 +42,12 @@ public class Magasin implements Serializable {
         this.name = name;
         this.demandeStockables = demandeStockables;
         this.stockables = stockables;
+    }
+
+    public Magasin(String name) {
+        this.name = name;
+        this.demandeStockables = new HashSet<>();
+        this.stockables = new HashSet<>();
     }
 
     public Set<DemandeStockable> getDemandeStockables() {
@@ -66,6 +76,14 @@ public class Magasin implements Serializable {
 
 
     public boolean confirmer(DemandeStockable ds){ return true;}
+
+    public void addStockable(Stockable stockable) {
+        this.stockables.add(stockable);
+    }
+
+    public void addDemandeStockable(DemandeStockable demandeStockables) {
+        this.demandeStockables.add(demandeStockables);
+    }
 
 
 }

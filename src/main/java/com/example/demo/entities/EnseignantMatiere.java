@@ -1,6 +1,8 @@
 package com.example.demo.entities;
 
-import com.example.demo.entities.enums.session;
+import com.example.demo.entities.enums.Groups;
+import com.example.demo.entities.enums.Session;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,20 +22,30 @@ public class EnseignantMatiere implements Serializable {
     private Enseignant enseignant ;
     private Matiere  matiere;
 
-    private session session;
+    private Session session;
 
-    private groups groupType;
+    private Groups groupType;
 
     private Long groupId;
 
+    public EnseignantMatiere(Enseignant enseignant, Matiere matiere, Session session, Groups groupType, Long groupId) {
+        this.enseignant = enseignant;
+        this.matiere = matiere;
+        this.session = session;
+        this.groupType = groupType;
+        this.groupId = groupId;
+    }
 
+    public EnseignantMatiere() {
 
+    }
+    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_Enseignant")
     public Enseignant getEnseignant() {
         return enseignant;
     }
-
+    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     public Matiere getMatiere() {
@@ -57,19 +69,19 @@ public class EnseignantMatiere implements Serializable {
     }
 
 
-    public com.example.demo.entities.enums.session getSession() {
+    public Session getSession() {
         return session;
     }
 
-    public void setSession(com.example.demo.entities.enums.session session) {
+    public void setSession(Session session) {
         this.session = session;
     }
 
-    public groups getGroupType() {
+    public Groups getGroupType() {
         return groupType;
     }
 
-    public void setGroupType(groups groupType) {
+    public void setGroupType(Groups groupType) {
         this.groupType = groupType;
     }
 
