@@ -34,9 +34,11 @@ public class Unite implements Serializable {
 
     private float coef;
 
+    private int  codeUnite ;
+
     private float credit;
 
-    public Unite(String name, Set<Semestre> semestres, Set<Matiere> matieres, float coef, float credit) {
+    public Unite(int  codeUnite, String name, Set<Semestre> semestres, Set<Matiere> matieres, float coef, float credit) {
         this.name = name;
         this.semestres = semestres;
         this.matieres = matieres;
@@ -44,7 +46,7 @@ public class Unite implements Serializable {
         this.credit = credit;
     }
 
-    public Unite(String name, float coef, float credit) {
+    public Unite(int  codeUnite, String name, float coef, float credit) {
         this.name = name;
         this.semestres = new HashSet<>();
         this.matieres = new HashSet<>();
