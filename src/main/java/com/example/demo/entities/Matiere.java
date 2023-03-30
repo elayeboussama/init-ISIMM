@@ -30,7 +30,7 @@ public class Matiere implements Serializable {
     private float credit;
 
     private int coeffCr;
-    private int coeff;
+    private float coeff;
     private int coeffTd;
     private int coeffTp;
     private int coeffCri;
@@ -68,7 +68,7 @@ public class Matiere implements Serializable {
     }
 
 
-    public Matiere(String name, float credit, int coeff, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int code, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Regime regime, Unite unite, Set<Note> notes, Set<EnseignantMatiere> enseignantMatiere) {
+    public Matiere(String name, float credit, float coeff, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int code, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Regime regime, Unite unite, Set<Note> notes, Set<EnseignantMatiere> enseignantMatiere) {
         this.name = name;
         this.credit = credit;
         this.coeffCr = coeffCr;
@@ -90,7 +90,7 @@ public class Matiere implements Serializable {
     }
 
 
-    public Matiere(String name, float credit, int coeff, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int code, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Regime regime, Unite unite ) {
+    public Matiere(String name, float credit, float coeff, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int code, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Regime regime, Unite unite ) {
         this.name = name;
         this.credit = credit;
         this.coeff = coeff;
