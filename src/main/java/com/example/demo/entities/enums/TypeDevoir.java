@@ -1,5 +1,5 @@
 package com.example.demo.entities.enums;
 
-public enum typeDevoir {
+public enum TypeDevoir {
     DS, EXAM, TP, ORAL
 }

@@ -1,8 +1,10 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,6 +20,7 @@ public class Diplome implements Serializable {
 
 
     @OneToMany(mappedBy="diplome",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Niveau> niveau;
 
 
@@ -30,10 +33,11 @@ public class Diplome implements Serializable {
         this.nom = nom;
         this.niveau = niveau;
     }
-
-    public Diplome(String name ) {
+    public Diplome(String nom) {
         this.nom = nom;
+        this.niveau  = new HashSet<>();
     }
+
 
 
 
@@ -51,6 +55,10 @@ public class Diplome implements Serializable {
 
     public void setNiveau(Set<Niveau> niveau) {
         this.niveau = niveau;
+    }
+
+    public void addNiveau(Niveau niveau) {
+        this.niveau.add(niveau);
     }
 }
 //Constructors

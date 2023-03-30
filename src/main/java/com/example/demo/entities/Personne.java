@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.example.demo.entities.enums.Sexe;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +18,7 @@ public class Personne implements Serializable {
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-    public enum Sexe{HOMME, FEMME};
+
     @Column(length = 100)
     private String cin;
     @Column(length = 100)
@@ -56,83 +57,7 @@ public class Personne implements Serializable {
     }
 
 
-    public String getCin() {
-        return cin;
-    }
 
-    public void setCin(String cin) {
-        this.cin = cin;
-    }
 
-    public String getNom() {
-        return nom;
-    }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public Date getNaissance() {
-        return naissance;
-    }
-
-    public void setNaissance(Date naissance) {
-        this.naissance = naissance;
-    }
-
-    public Sexe getSexe() {
-        return sexe;
-    }
-
-    public void setSexe(Sexe sexe) {
-        this.sexe = sexe;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }

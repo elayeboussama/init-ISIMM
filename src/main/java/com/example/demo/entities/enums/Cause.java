@@ -1,5 +1,5 @@
 package com.example.demo.entities.enums;
 
-public enum cause {
+public enum Cause {
     MALADIE, MATERNITE, PATERNITE,CORONA
 }

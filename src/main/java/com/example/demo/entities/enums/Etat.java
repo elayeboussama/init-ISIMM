@@ -1,5 +1,5 @@
 package com.example.demo.entities.enums;
 
-public enum etat {
+public enum Etat {
     ACCEPTE, ATTENTE, REFUSE
 }

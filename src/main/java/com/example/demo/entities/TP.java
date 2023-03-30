@@ -1,10 +1,13 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -21,8 +24,10 @@ public class TP implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "tp", fetch = FetchType.LAZY)
-    private Set<Etudiant> etudiants;
+    @JsonManagedReference
+    private Set<Etudiant> etudiants ;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     @JoinColumn(name="tps")
     private TD td;
 
@@ -32,23 +37,17 @@ public class TP implements Serializable {
     public TP(String name, TD td) {
         this.name = name;
         this.td = td;
+        this.etudiants = new HashSet<>();
     }
 
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public TP(String name, Set<Etudiant> etudiants, TD td) {
         this.name = name;
-    }
-
-    public TD getTd() {
-        return td;
-    }
-
-    public void setTd(TD td) {
+        this.etudiants = etudiants;
         this.td = td;
+    }
+
+    public void addEtudiant(Etudiant etudiant) {
+        this.etudiants.add(etudiant);
     }
 }
 //Constructors

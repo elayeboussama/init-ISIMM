@@ -1,5 +1,5 @@
 package com.example.demo.entities.enums;
 
-public enum typeSeance {
+public enum TypeSeance {
     DS, EXAM, CHARGE
 }

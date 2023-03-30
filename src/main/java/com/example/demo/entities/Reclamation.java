@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
-import com.example.demo.entities.enums.devoirTypes;
+import com.example.demo.entities.enums.TypeDevoir;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +19,7 @@ public class Reclamation implements Serializable {
     @GeneratedValue
     @Column(name = "id_reclamation", nullable = false)
     private Long idReclamation;
-
+    @JsonBackReference
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="id_etudiant", nullable = false)
     private Etudiant etudiant;
@@ -39,7 +40,7 @@ public class Reclamation implements Serializable {
     private int codeMatiere;
 
     @Column
-    private devoirTypes typeNote;
+    private TypeDevoir typeNote;
 
 
 
@@ -51,7 +52,7 @@ public class Reclamation implements Serializable {
 
     }
 
-    public Reclamation(Etudiant etudiant, Date creationDateTime, String message, String statut, int codeMatiere, devoirTypes typeNote) {
+    public Reclamation(Etudiant etudiant, Date creationDateTime, String message, String statut, int codeMatiere, TypeDevoir typeNote) {
         this.etudiant = etudiant;
         this.creationDateTime = creationDateTime;
         this.message = message;
