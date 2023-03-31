@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
-@RequestMapping("api/isimm/gestionMagasin/exempleEntity")
+@RequestMapping("api/isimm/gestionMagasin/magasin/exempleEntity")
 public class MagasinEntityController {
 
     private final MagasinEntityServices entityService;
