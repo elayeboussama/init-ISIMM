@@ -24,7 +24,10 @@ public class Reclamation implements Serializable {
     @JoinColumn(name="id_etudiant", nullable = false)
     private Etudiant etudiant;
 
-
+    @JsonBackReference
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="id_enseignant", nullable = false)
+    private Enseignant enseignant;
     @Column
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
@@ -60,7 +63,14 @@ public class Reclamation implements Serializable {
         this.codeMatiere = codeMatiere;
         this.typeNote = typeNote;
     }
-
+    public Reclamation(Enseignant enseignant, Date creationDateTime, String message, String statut, int codeMatiere, TypeDevoir typeNote) {
+        this.enseignant = enseignant;
+        this.creationDateTime = creationDateTime;
+        this.message = message;
+        this.statut = statut;
+        this.codeMatiere = codeMatiere;
+        this.typeNote = typeNote;
+    }
     public Reclamation(String message, String statut) {
 //        this.note = note;
         this.message = message;
