@@ -22,11 +22,14 @@ public class Facture implements Serializable {
     @Column(length = 100)
     private String adresseFacturation;
 
+
+    @Column
     private Date dateFacrutation;
 
 
 
     @ManyToMany
+    @JoinColumn(name="id_factureStockables")
     Set<FactureStockable> factureStockables;
 
 

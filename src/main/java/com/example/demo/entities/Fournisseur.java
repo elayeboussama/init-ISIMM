@@ -23,6 +23,7 @@ public class Fournisseur implements Serializable {
 
 
     @ManyToMany
+    @JoinColumn(name="id_factures")
     Set<Facture> factures;
 
     public Fournisseur(String name, Set<Facture> factures) {

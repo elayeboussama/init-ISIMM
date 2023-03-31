@@ -28,7 +28,7 @@ public class TP implements Serializable {
     private Set<Etudiant> etudiants ;
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
-    @JoinColumn(name="tps")
+    @JoinColumn(name="td")
     private TD td;
 
     public TP() {

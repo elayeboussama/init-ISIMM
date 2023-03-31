@@ -34,10 +34,11 @@ public class Employer  extends Personne {
     private float Salaire;
 
     @ManyToMany
+    @JoinColumn(name="id_services")
     private Set<Service> services;
     @JsonBackReference
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="department")
+    @JoinColumn(name="id_department")
     private Department department;
 
     @OneToMany(mappedBy = "employer",fetch=FetchType.LAZY)

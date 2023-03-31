@@ -29,11 +29,12 @@ public class Semestre implements Serializable {
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="niveau")
+    @JoinColumn(name="id_niveau")
     private Niveau niveau;
 
     @ManyToMany
-    private Set<Unite> unitesSems;
+    @JoinColumn(name="id_unitesSems")
+    private Set<Unite> unitesSemstre;
 
 
 
@@ -45,24 +46,24 @@ public class Semestre implements Serializable {
         this.name = name;
         this.sections = new HashSet<>();
         this.niveau = niveau;
-        this.unitesSems = new HashSet<>();
+        this.unitesSemstre = new HashSet<>();
     }
     public Semestre(String name, Set<Section> sections, Niveau niveau, Set<Unite> unitesSems) {
         this.name = name;
         this.sections = sections;
         this.niveau = niveau;
-        this.unitesSems = unitesSems;
+        this.unitesSemstre = unitesSems;
     }
 
     public Semestre(String name, Niveau niveau, Set<Unite> unites) {
         this.name = name;
         this.niveau = niveau;
-        this.unitesSems = unites;
+        this.unitesSemstre = unites;
     }
 
 
     public void addUnite(Unite unite) {
-        this.unitesSems.add(unite);
+        this.unitesSemstre.add(unite);
     }
     public void addSections(Section section) {
         this.sections.add(section);

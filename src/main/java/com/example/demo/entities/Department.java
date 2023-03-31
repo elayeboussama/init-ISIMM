@@ -26,6 +26,7 @@ public class Department implements Serializable {
     private String NonDepartement;
 
     @OneToOne
+    @JoinColumn(name="id_ChefDepartement")
     private Employer ChefDepartement;
 
     @OneToMany(mappedBy = "department",fetch=FetchType.LAZY)
