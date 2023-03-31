@@ -25,7 +25,8 @@ public class Enseignant extends Employer  {
     @OneToMany(mappedBy="enseignant",fetch=FetchType.LAZY)
     @JsonManagedReference
     private Set<Voeux> voeux;
-
+    @OneToMany(mappedBy = "enseignant",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<EnseignantMatiere> enseignantMatiere ;
 
 
@@ -34,9 +35,10 @@ public class Enseignant extends Employer  {
     private Set<Note> notes;
 
 
-
+    @Column
     private float NombreHeures;
 
+    @Column
     private Grade gradeEnseignant ;
 
 
@@ -86,6 +88,9 @@ public class Enseignant extends Employer  {
 
 
 
+
+
+
     public Set<Voeux> getVoeux() {
         return voeux;
     }
@@ -94,8 +99,7 @@ public class Enseignant extends Employer  {
         this.voeux = voeux;
     }
 
-    @OneToMany(mappedBy = "enseignant")
-    @JsonManagedReference
+
     public Set<EnseignantMatiere> getEnseignantMatiere() {
         return enseignantMatiere;
     }
@@ -113,7 +117,7 @@ public class Enseignant extends Employer  {
 
     public void addEnseignantMatiere(EnseignantMatiere enseignantMatiere) {
         this.enseignantMatiere.add(enseignantMatiere);
-        //enseignantMatiere.setEnseignant(this);
+        enseignantMatiere.setEnseignant(this);
     }
 
     public void addNote(Note note) {

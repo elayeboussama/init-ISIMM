@@ -43,6 +43,7 @@ public class FactureStockable implements Serializable {
     private Service service;
 
     @ManyToMany
+    @JoinColumn(name="id_factures")
     Set<Facture> factures ;
 
     public FactureStockable() {

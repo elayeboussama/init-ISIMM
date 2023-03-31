@@ -61,6 +61,8 @@ public class Matiere implements Serializable {
     @JsonManagedReference
     private Set<Note> notes;
 
+    @OneToMany(mappedBy = "matiere")
+    @JsonManagedReference
     private Set<EnseignantMatiere> enseignantMatiere ;
 
     public Matiere() {
@@ -119,8 +121,7 @@ public class Matiere implements Serializable {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "matiere")
-    @JsonManagedReference
+
     public Set<EnseignantMatiere> getEnseignantMatiere() {
         return enseignantMatiere;
     }

@@ -23,16 +23,18 @@ public class Regime implements Serializable {
     @Column(length = 100)
     private String name;
 
-    private int coeffCr;
-    private int coeffTd;
-    private int coeffTp;
-    private int coeffCri;
-    private int coeffNp;
+    @Column
+    private int coeff;
 
+    @Column
     private int nbHCr;
+    @Column
     private int nbHTd;
+    @Column
     private int nbHTp;
+    @Column
     private int nbHCri;
+    @Column
     private int nbHNp;
 
 
@@ -49,13 +51,9 @@ public class Regime implements Serializable {
     }
 
 
-    public Regime(String name, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Set<Matiere> matieres) {
+    public Regime(String name, int coeff, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Set<Matiere> matieres) {
         this.name = name;
-        this.coeffCr = coeffCr;
-        this.coeffTd = coeffTd;
-        this.coeffTp = coeffTp;
-        this.coeffCri = coeffCri;
-        this.coeffNp = coeffNp;
+        this.coeff = coeff;
         this.nbHCr = nbHCr;
         this.nbHTd = nbHTd;
         this.nbHTp = nbHTp;
@@ -64,13 +62,9 @@ public class Regime implements Serializable {
         this.matieres = matieres;
     }
 
-    public Regime(String name, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp) {
+    public Regime(String name,int coeff, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp) {
         this.name = name;
-        this.coeffCr = coeffCr;
-        this.coeffTd = coeffTd;
-        this.coeffTp = coeffTp;
-        this.coeffCri = coeffCri;
-        this.coeffNp = coeffNp;
+        this.coeff = coeff;
         this.nbHCr = nbHCr;
         this.nbHTd = nbHTd;
         this.nbHTp = nbHTp;

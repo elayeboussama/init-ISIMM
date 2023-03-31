@@ -19,13 +19,21 @@ public class EnseignantMatiere implements Serializable {
     @GeneratedValue
     @Column(name = "id_Enseignant_Matiere", nullable = false)
     private Long idEnseignantMatiere;
+
+
+    @ManyToOne
+    @JoinColumn(name="id_enseignant")
     private Enseignant enseignant ;
+
+    @ManyToOne
+    @JoinColumn(name="id_matiere")
     private Matiere  matiere;
 
+    @Column
     private Session session;
-
+    @Column
     private Groups groupType;
-
+    @Column
     private Long groupId;
 
     public EnseignantMatiere(Enseignant enseignant, Matiere matiere, Session session, Groups groupType, Long groupId) {

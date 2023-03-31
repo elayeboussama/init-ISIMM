@@ -15,7 +15,7 @@ import java.util.Date;
 @Setter
 public class Personne implements Serializable {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -26,9 +26,11 @@ public class Personne implements Serializable {
     @Column(length = 100)
     private String prenom;
 
+    @Column
     private Date naissance;
 
     @Enumerated(EnumType.STRING)
+    @Column
     private Sexe sexe;
     @Column(length = 500)
     private String adresse ;
@@ -38,6 +40,7 @@ public class Personne implements Serializable {
     private String email;
     @Column(length = 100)
     private String telephone;
+    @Column
     private int age;
 
     public Personne() {

@@ -23,6 +23,7 @@ public class Service implements Serializable {
     private String name;
 
     @ManyToMany
+    @JoinColumn(name="id_employers")
     private Set<Employer> employers;
 
 
