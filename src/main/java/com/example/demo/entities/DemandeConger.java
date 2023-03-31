@@ -35,20 +35,20 @@ public class DemandeConger implements Serializable {
     private String Justification;
     private Date DateDebut;
     private Date DateFin;
-    private Etat etatDemande;
+    private Etat etatDemande=Etat.ATTENTE;
 
     public DemandeConger() {
 
     }
 
-    public DemandeConger(Employer employer, Cause type, TypeCongé typecongé, String justification, Date dateDebut, Date dateFin, Etat etatDemande) {
+    public DemandeConger(Employer employer, Cause type, TypeCongé typecongé, String justification, Date dateDebut, Date dateFin) {
         this.employer = employer;
         this.type = type;
         this.Typecongé = typecongé;
         this.Justification = justification;
         this.DateDebut = dateDebut;
         this.DateFin = dateFin;
-        this.etatDemande = etatDemande;
+       
     }
 
 
