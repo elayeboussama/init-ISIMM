@@ -34,6 +34,12 @@ public class Note implements Serializable {
     private Enseignant enseingant;
 
 
+    @JsonBackReference
+    @ManyToOne()
+    @JoinColumn(name="id_semestre")
+    private Semestre semestre;
+
+
     @Column
     private TypeDevoir type;
 
@@ -52,6 +58,15 @@ private Date date;
         this.note = note;
         this.date = date;
     }
+    public Note(Matiere matiere, Etudiant etudiant, Enseignant enseingant, TypeDevoir type, float note, Date date, Semestre semestre) {
 
+        this.matiere = matiere;
+        this.etudiant = etudiant;
+        this.enseingant = enseingant;
+        this.type = type;
+        this.note = note;
+        this.date = date;
+        this.semestre = semestre;
+    }
 }
 
