@@ -48,6 +48,8 @@ public class Semestre implements Serializable {
         this.niveau = niveau;
         this.unitesSemstre = new HashSet<>();
     }
+
+
     public Semestre(String name, Set<Section> sections, Niveau niveau, Set<Unite> unitesSems) {
         this.name = name;
         this.sections = sections;
