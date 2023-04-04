@@ -28,6 +28,8 @@ public class CongeEntityServices {
 	private  DemandeCongerRepository demandeCongerRepository;
 	
     public DemandeConger addDemande(@RequestBody DemandeConger c){
+
+		Employer employer = c.getEmployer();
     	
         if (c == null || c.getDateDebut() == null || c.getDateFin() == null || c.getJustification() == null || c.getType() ==null || c.getTypecongé()==null) {
             throw new IllegalArgumentException("La demande est invalide");
@@ -37,7 +39,7 @@ public class CongeEntityServices {
             throw new IllegalArgumentException("La date de début doit être avant la date de fin");
         }
        
-        Employer employer = c.getEmployer();
+       
         
         long differenceMillis = Math.abs(c.getDateFin().getTime() - c.getDateDebut().getTime());
 
@@ -48,15 +50,8 @@ public class CongeEntityServices {
         	 throw new IllegalArgumentException("Nombre de Jours demande est superieure a celui de jours restants ");
         }
         
-        if(employer instanceof Enseignant) {
-        	
-        	
-        	
-        }
-        if(employer instanceof StaffAdministratif) {
-        	
-        	
-        }
+       // if(employer instanceof Enseignant) {}
+       // if(employer instanceof StaffAdministratif) {}
         
         employer.addDemandeConger(c);
     	
