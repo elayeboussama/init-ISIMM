@@ -34,13 +34,6 @@ public class Niveau implements Serializable {
 
 
 
-
-
-
-
-
-
-
     public Niveau() {
 
     }

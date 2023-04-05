@@ -31,7 +31,7 @@ public class DemandeConger implements Serializable {
 
 
     private Cause type;
-    private TypeCongé Typecongé;
+    
     private String Justification;
     private Date DateDebut;
     private Date DateFin;
@@ -41,10 +41,9 @@ public class DemandeConger implements Serializable {
 
     }
 
-    public DemandeConger(Employer employer, Cause type, TypeCongé typecongé, String justification, Date dateDebut, Date dateFin, Etat etatDemande) {
+    public DemandeConger(Employer employer, Cause type, String justification, Date dateDebut, Date dateFin, Etat etatDemande) {
         this.employer = employer;
         this.type = type;
-        this.Typecongé = typecongé;
         this.Justification = justification;
         this.DateDebut = dateDebut;
         this.DateFin = dateFin;
