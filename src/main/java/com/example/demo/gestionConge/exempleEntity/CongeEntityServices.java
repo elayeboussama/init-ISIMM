@@ -51,7 +51,7 @@ public class CongeEntityServices {
         }
         
        // if(employer instanceof Enseignant) {}
-       // if(employer instanceof StaffAdministratif) {}
+        if(employer instanceof StaffAdministratif) {}
         
         employer.addDemandeConger(c);
     	
