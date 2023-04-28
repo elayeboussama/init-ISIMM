@@ -1,63 +1,123 @@
 package com.example.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 @Entity
-@Getter
-@Setter
 public class Stockable implements Serializable {
+	@Id @GeneratedValue
+	private Long idStockable;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id_stockable", nullable = false)
-    private Long idStockable;
+	@Column
+	private String refStockable;
+	@Column(length=100)
+	private String name;
+	private Double tva;
+	@ManyToOne
+	@JoinColumn(name="magasin")
+	private Magasin magasin;
 
-    @Column(length = 100)
-    private String nom;
+	@OneToMany(mappedBy="stockable")
+	private Collection<FactureStockable> FactureStockables=new HashSet<FactureStockable>();
 
-    @ManyToMany
-    @JoinTable(name = "Stockable_facture_stockable", joinColumns = {@JoinColumn(name = "id_Stockable")}, inverseJoinColumns = {@JoinColumn(name = "id_facture_stockable")})
-    Set<FactureStockable> factureStockables;
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_demande_unstockable" , referencedColumnName = "idDemandeUnstockable")
-    private DemandeUnstockable demandeUnstockable;
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_magasin")
-    private Magasin magasin;
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_service" , referencedColumnName = "idService")
-    private Service service;
-    public Stockable() {
+	@OneToMany(mappedBy="stockable")
+	private Collection<DemandeUnStockable> Demandes=new HashSet<DemandeUnStockable>();
 
-    }
-    public Stockable(String nom, Set<FactureStockable> factureStockables, DemandeUnstockable demandeUnstockable, Magasin magasin, Service service) {
-        this.nom = nom;
-        this.factureStockables = factureStockables;
-        this.demandeUnstockable = demandeUnstockable;
-        this.magasin = magasin;
-        this.service = service;
-    }
 
-    public Stockable(String nom, DemandeUnstockable demandeUnstockable, Magasin magasin, Service service) {
-        this.nom = nom;
-        this.factureStockables = new HashSet<>();
-        this.demandeUnstockable = demandeUnstockable;
-        this.magasin = magasin;
-        this.service = service;
-    }
+	public Stockable() {
+		
+	}
+	public Stockable(String name,  Double tva,Magasin magasin, String refStockable) {
+		this.name = name;
+		this.tva=tva;
+		this.magasin=magasin;
+		this.refStockable=refStockable;
+	
+	}
+	public Double getTva() {
+		return tva;
+	}
+	public void setTva(Double tva) {
+		this.tva = tva;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+		
+	}
 
-    public void addFactureStockable(FactureStockable factureStockable) {
-        this.factureStockables.add(factureStockable);
-    }
+	public String getRefStockable() {
+		return refStockable;
+	}
+
+	public void setRefStockable(String refStockable) {
+		this.refStockable = refStockable;
+	}
+
+	public Magasin getMagasin()
+	{
+		return magasin;
+	}
+	public void setMagasin(Magasin magasin)
+	{
+		this.magasin=magasin;
+	}
+	public Long getIdStockable() {
+		return idStockable;
+	}
+	public void setIdStockable(Long idStockable) {
+		this.idStockable=idStockable;
+	}
+
+	@JsonIgnore
+	public Collection<DemandeUnStockable> getDemandes()
+	{
+		return Demandes;
+	}
+	public void setDemandes(Collection<DemandeUnStockable> Demandes )
+	{
+		this.Demandes=Demandes;
+	}
+
+	@JsonIgnore
+	public Collection<FactureStockable> getFactureStockables()
+	{
+		return FactureStockables;
+	}
+
+	public void setFactureStockables(Collection<FactureStockable> FactureStockables )
+	{
+		this.FactureStockables=FactureStockables;
+	}
+
+
+	public void addDemande(DemandeUnStockable demandeUnStockable){
+		this.Demandes.add(demandeUnStockable);
+	}
+
+	public void addFactureStockable(FactureStockable factureStockable )
+	{
+		this.FactureStockables.add(factureStockable);
+	}
+	
 }
-

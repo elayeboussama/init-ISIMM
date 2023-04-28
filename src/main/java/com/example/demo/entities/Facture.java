@@ -1,81 +1,78 @@
 package com.example.demo.entities;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Set;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 @Entity
-@Getter
-@Setter
 public class Facture implements Serializable {
+	@Id @GeneratedValue
+	private Long idFacture;
+	private Date dateFacturation;
+	@Column(length=100)
+	private String addressFacturation ;
+	@ManyToOne
+	@JoinColumn(name="fournisseur")
+	private Fournisseur fournisseur;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id_facture", nullable = false)
-    private Long idFacture ;
+	@OneToMany(mappedBy="facture")
+	private Collection<FactureStockable> FactureStockables=new HashSet<FactureStockable>();
+	public Facture() {
+		
+	}
+	public Facture(Date dateFacturation, String addressFacturation,Fournisseur fournisseur) {
+		this.dateFacturation = dateFacturation;
+		this.addressFacturation = addressFacturation;
+		this.fournisseur=fournisseur;
+	
+	}
+	public Date getDateFacturation() {
+		return dateFacturation;
+	}
+	public void setDateFacturation(Date dateFacturation) {
+		this.dateFacturation = dateFacturation;
+	}
+	public String getAddressFacturation() {
+		return addressFacturation;
+	}
+	public void setAddressFacturation(String addressFacturation) {
+		this.addressFacturation = addressFacturation;
+	}
+	public Fournisseur getFournisseur() {
+		return fournisseur;
+	}
+	public void setFournisseur(Fournisseur fournisseur)
+	{
+		this.fournisseur=fournisseur;
+	}
+	public Long getIdFacture() {
+		return idFacture;
+	}
+	public void setIdFacture(Long idFacture) {
+		this.idFacture=idFacture;
+	}
 
-    @Column(length = 100)
-    private String adresseFacturation;
+	public Collection<FactureStockable> getFactureStockables() {
+		return FactureStockables;
+	}
+	public void setFactureStockables(Collection<FactureStockable> FactureStockables )
+	{
+		this.FactureStockables=FactureStockables;
+	}
+
+	public void addFactureStockable (FactureStockable fs){
+		this.FactureStockables.add(fs);
+	}
 
 
-    @Column
-    private Date dateFacrutation;
-
-
-
-    @ManyToMany
-    @JoinColumn(name="id_factureStockables")
-    Set<FactureStockable> factureStockables;
-
-
-    public Facture() {
-    }
-
-    public Facture(String adresseFacturation, Date dateFacrutation, Set<FactureStockable> factureStockables) {
-        this.adresseFacturation = adresseFacturation;
-        this.dateFacrutation = dateFacrutation;
-        this.factureStockables = factureStockables;
-    }
-
-    public Facture(String adresseFacturation, Date dateFacrutation ) {
-        this.adresseFacturation = adresseFacturation;
-        this.dateFacrutation = dateFacrutation;
-        this.factureStockables = new HashSet<>();
-    }
-
-    public String getAdresseFacturation() {
-        return adresseFacturation;
-    }
-
-    public void setAdresseFacturation(String adresseFacturation) {
-        this.adresseFacturation = adresseFacturation;
-    }
-
-    public Date getDateFacrutation() {
-        return dateFacrutation;
-    }
-
-    public void setDateFacrutation(Date dateFacrutation) {
-        this.dateFacrutation = dateFacrutation;
-    }
-
-    public Set<FactureStockable> getFactureStockables() {
-        return factureStockables;
-    }
-
-    public void setFactureStockables(Set<FactureStockable> factureStockables) {
-        this.factureStockables = factureStockables;
-    }
-
-    public void addFactureStockables(FactureStockable factureStockable) {
-        this.factureStockables.add(factureStockable);
-    }
 }
-//Constructors
-
-//Getters and Setters
