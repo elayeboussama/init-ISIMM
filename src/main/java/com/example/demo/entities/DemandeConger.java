@@ -31,7 +31,7 @@ public class DemandeConger implements Serializable {
 
 
     private Cause type;
-    
+
     private String Justification;
     private Date DateDebut;
     private Date DateFin;

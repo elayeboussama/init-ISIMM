@@ -1,88 +1,79 @@
 package com.example.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+
 
 @Entity
-@Getter
-@Setter
 public class FactureStockable implements Serializable {
+	@Id @GeneratedValue
+	private Long idFactureStockable;
+	@Column(length=100)
+	private Long quantite;
+	private Double prix;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id_facture_stockable", nullable = false)
-    private Long idFactureStockable;
+	@ManyToOne
+	@JoinColumn(name="stockable")
+	private Produit stockable;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="facture")
+	private Facture facture;
+	public FactureStockable() {
+		
+	}
+	public FactureStockable(Long quantite, Double prix,Produit stockable,Facture facture) {
+		this.quantite = quantite;
+		this.prix = prix;
 
-    @Column
-    private int quantite;
+		this.stockable=stockable;
+		this.facture=facture;
+	}
+	public Long getQuantite() {
+		return quantite;
+	}
+	public void setQuantite(Long quantite) {
+		this.quantite = quantite;
+	}
+	public Double getPrix() {
+		return prix;
+	}
+	public void setPrix(Double prix) {
+		this.prix = prix;
+	}
 
-    @Column
-    private float prix;
-
-    @Column
-    private float tva;
-
-
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_demande_unstockable")
-    private DemandeUnstockable demandeUnstockable;
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_magasin" )
-    private Magasin magasin;
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_service" )
-    private Service service;
-
-    @ManyToMany
-    @JoinColumn(name="id_factures")
-    Set<Facture> factures ;
-
-    public FactureStockable() {
-    }
-
-    public FactureStockable(int quantite, float prix, float tva, DemandeUnstockable demandeUnstockable, Magasin magasin, Service service, Set<Facture> factures) {
-        this.quantite = quantite;
-        this.prix = prix;
-        this.tva = tva;
-        this.demandeUnstockable = demandeUnstockable;
-        this.magasin = magasin;
-        this.service = service;
-        this.factures = factures;
-    }
-
-    public FactureStockable(int quantite, float prix, float tva, DemandeUnstockable demandeUnstockable, Magasin magasin, Service service ) {
-        this.quantite = quantite;
-        this.prix = prix;
-        this.tva = tva;
-        this.demandeUnstockable = demandeUnstockable;
-        this.magasin = magasin;
-        this.service = service;
-        this.factures  = new HashSet<>();
-    }
-
-
-
-    public Service getService() {
-        return service;
-    }
-
-    public void setService(Service service) {
-        this.service = service;
-    }
-
-
-    public void addFacture(Facture facture) {
-        this.factures.add(facture);
-    }
-
+	public Produit getStockable() {
+		return stockable;
+	}
+	public void setStockable(Produit stockable) {
+		this.stockable=stockable;
+	}
+	public Facture getFacture() {
+		return facture;
+	}
+	public void setFacture(Facture facture)
+	{
+		this.facture=facture;
+	}
+	public Long getIdFactureStockable() {
+		return idFactureStockable;
+	}
+	public void setIdFactureStockable(Long idFactureStockable) {
+		this.idFactureStockable=idFactureStockable;
+	}
+	
+	
+	
 }
-

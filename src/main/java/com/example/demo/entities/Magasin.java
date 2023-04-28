@@ -1,92 +1,71 @@
 package com.example.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 @Entity
-@Getter
-@Setter
 public class Magasin implements Serializable {
+	@Id @GeneratedValue
+	private Long idMagasin;
+	@Column(length=100)
+	private String name;
+	@OneToMany(mappedBy="magasin")
+	private Collection<Service> services=new HashSet<Service>();
+	@OneToMany(mappedBy="magasin")
+	private Collection<Stockable> Stockables=new HashSet<Stockable>();
+	public Magasin() {
+		
+	}
+	public Magasin(String name) {
+		this.name = name;
+		
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Long getIdMagasin() {
+		return idMagasin;
+	}
+	public void setIdMagasin(Long idMagasin) {
+		this.idMagasin=idMagasin;
+	}
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id_magasin", nullable = false)
-    private Long idMagasin;
+	@JsonIgnore
+	public Collection<Service> getServices() {
+		return services;
+	}
+	public void setServices(Collection<Service> Services )
+	{
+		this.services=Services;
+	}
 
-    @Column(length = 100)
-    private String name;
-
-    @OneToMany(mappedBy = "magasin",fetch=FetchType.LAZY)
-    @JsonManagedReference
-    private Set<DemandeStockable> demandeStockables;
-
-
-    @OneToMany(mappedBy = "magasin",fetch=FetchType.LAZY)
-    @JsonManagedReference
-    private Set<Stockable> stockables;
-
-
-
-
-    public Magasin() {
-
-    }
-
-    public Magasin(String name, Set<DemandeStockable> demandeStockables, Set<Stockable> stockables) {
-        this.name = name;
-        this.demandeStockables = demandeStockables;
-        this.stockables = stockables;
-    }
-
-    public Magasin(String name) {
-        this.name = name;
-        this.demandeStockables = new HashSet<>();
-        this.stockables = new HashSet<>();
-    }
-
-    public Set<DemandeStockable> getDemandeStockables() {
-        return demandeStockables;
-    }
-
-    public void setDemandeStockables(Set<DemandeStockable> demandeStockables) {
-        this.demandeStockables = demandeStockables;
-    }
-
-    public Set<Stockable> getStockables() {
-        return stockables;
-    }
-
-    public void setStockables(Set<Stockable> stockables) {
-        this.stockables = stockables;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+	@JsonIgnore
+	public Collection<Stockable> getStockables() {
+		return Stockables;
+	}
+	public void setStockables(Collection<Stockable> Stockables )
+	{
+		this.Stockables=Stockables;
+	}
 
 
-    public boolean confirmer(DemandeStockable ds){ return true;}
-
-    public void addStockable(Stockable stockable) {
-        this.stockables.add(stockable);
-    }
-
-    public void addDemandeStockable(DemandeStockable demandeStockables) {
-        this.demandeStockables.add(demandeStockables);
-    }
-
-
+	public void addService(Service service) {
+		this.services.add(service);
+	}
+	public void addStockables(Stockable stockable) {
+		this.Stockables.add(stockable);
+	}
 }
-//Constructors
-
-//Getters and Setters
