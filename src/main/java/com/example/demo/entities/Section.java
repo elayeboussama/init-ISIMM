@@ -33,7 +33,10 @@ public class Section implements Serializable {
     private Set<TD> tds;
 
 
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_semestre2")
+    @JsonBackReference
+    private Semestre semestre2;
 
     public Section() {
 
@@ -48,6 +51,20 @@ public class Section implements Serializable {
     public Section(String name, Semestre semestre) {
         this.name = name;
         this.semestre = semestre;
+        this.tds = new HashSet<>();
+    }
+
+    public Section(String name, Semestre semestre, Semestre semestre2, Set<TD> tds) {
+        this.name = name;
+        this.semestre = semestre;
+        this.semestre2 = semestre2;
+        this.tds = tds;
+    }
+
+    public Section(String name, Semestre semestre, Semestre semestre2) {
+        this.name = name;
+        this.semestre = semestre;
+        this.semestre2 = semestre2;
         this.tds = new HashSet<>();
     }
 
