@@ -4,12 +4,13 @@ import com.example.demo.entities.enums.Grade;
 import com.example.demo.entities.enums.Sexe;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Entity
 @Table(name="Enseignant")
@@ -42,11 +43,23 @@ public class Enseignant extends Employer  {
     private Grade gradeEnseignant ;
 
 
+    @ElementCollection
+    private ArrayList<LocalDate> notAvailable;
+
+
     public Enseignant() {
 
     }
 
-
+    public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable,Set<Service> services, ArrayList<LocalDate> notAvailable, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, Grade gradeEnseignant) {
+        super(department, demandeConger, demandeStockable, services, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
+        this.voeux = voeux;
+        this.enseignantMatiere = enseignantMatiere;
+        this.notes = notes;
+        this.NombreHeures = nombreHeures;
+        this.gradeEnseignant = gradeEnseignant;
+        this.notAvailable = notAvailable;
+    }
 
     public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable,Set<Service> services, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, Grade gradeEnseignant) {
         super(department, demandeConger, demandeStockable, services, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
@@ -55,8 +68,10 @@ public class Enseignant extends Employer  {
         this.notes = notes;
         this.NombreHeures = nombreHeures;
         this.gradeEnseignant = gradeEnseignant;
+
     }
 
+    @Builder
     public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable,Set<Service> services, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, float nombreHeures, Grade gradeEnseignant) {
         super(department, demandeConger, demandeStockable,services, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
         this.NombreHeures = nombreHeures;
@@ -64,6 +79,7 @@ public class Enseignant extends Employer  {
         this.voeux = new HashSet<Voeux>();
         this.enseignantMatiere = new HashSet<EnseignantMatiere>();
         this.notes = new HashSet<Note>();
+        this.notAvailable  = new ArrayList<LocalDate>();
     }
 
     public Enseignant(Department department, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, Grade gradeEnseignant) {
@@ -87,7 +103,15 @@ public class Enseignant extends Employer  {
     }
 
 
+    /*****************************************************/
+    public Enseignant(String nom) {
+        super(  nom );
 
+        this.voeux = new HashSet<Voeux>();
+        this.enseignantMatiere = new HashSet<EnseignantMatiere>();
+        this.notes = new HashSet<Note>();
+    }
+    /*****************************************************/
 
 
 
@@ -122,6 +146,11 @@ public class Enseignant extends Employer  {
 
     public void addNote(Note note) {
         this.notes.add(note);
+        //note.setEnseignant(this);
+    }
+
+    public void addNotAvailable(LocalDate  dt) {
+        this.notAvailable.add(dt);
         //note.setEnseignant(this);
     }
 

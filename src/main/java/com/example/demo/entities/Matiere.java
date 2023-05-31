@@ -83,6 +83,16 @@ public class Matiere implements Serializable {
     }
 
 
+    /*****************************************************/
+    public Matiere(String name ) {
+        this.name = name;
+
+    }
+    /*****************************************************/
+
+
+
+
     public Matiere(String name, float credit, float coeff, int coeffExam, int coeffDs, int coeffTp, int coeffOral, int code, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Regime regime, Unite unite, Set<Note> notes, Set<EnseignantMatiere> enseignantMatiere) {
         this.name = name;
         this.credit = credit;
