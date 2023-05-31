@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,16 +36,22 @@ public class Emploi implements Serializable {
     @JsonManagedReference
     private Set<Seance> seances;
 
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "enseignant_id")
+    private Enseignant enseignant;
+
     public Emploi(Date dateDebut, Date dateFin, Set<Seance> seances) {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.seances = seances;
     }
 
-    public Emploi(Date dateDebut, Date dateFin ) {
+    public Emploi(Date dateDebut, Date dateFin,Enseignant enseignant ) {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.seances  = new HashSet<>();
+        this.enseignant = enseignant;
     }
 
 
@@ -56,5 +64,13 @@ public class Emploi implements Serializable {
         this.seances.add(seance);
     }
 
-
+    @Override
+    public String toString() {
+        return "Emploi{" +
+                "startDate=" + dateDebut +
+                ", endDate=" + dateFin +
+                ", seances=" + seances +
+                ", enseignant=" + enseignant +
+                '}';
+    }
 }

@@ -49,6 +49,12 @@ public class Employer  extends Personne {
     @JsonManagedReference
     private Set<DemandeStockable> demandeStockable;
 
+    /*****************************************************/
+    public Employer(  String nom ) {
+        super(  nom );
+
+    }
+    /*****************************************************/
 
 
     public Employer(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, Set<Service> services, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire) {

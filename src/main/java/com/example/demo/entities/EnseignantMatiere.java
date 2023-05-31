@@ -42,6 +42,14 @@ public class EnseignantMatiere implements Serializable {
     @Column
     private Long groupId;
 
+    /*****************************************************/
+    public EnseignantMatiere(Enseignant enseignant, Matiere matiere ) {
+        this.enseignant = enseignant;
+        this.matiere = matiere;
+    }
+    /*****************************************************/
+
+
     public EnseignantMatiere(Enseignant enseignant, Matiere matiere, Session session, Groups groupType, Long groupId) {
         this.enseignant = enseignant;
         this.matiere = matiere;
